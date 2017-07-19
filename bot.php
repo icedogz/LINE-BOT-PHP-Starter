@@ -51,10 +51,10 @@ if (!is_null($events['events'])) {
 				'text' => $text
 			];
 
-			if($text=="จาวิส ราคา ETH"){
+			if($text=="จาวิส ขอราคา ETH"){
 				$messages = [
 					'type' => 'text',
-					'text' => 'ETH ราคา '.$bx_price->{21}->last_price.' บาทเด้อ'
+					'text' => 'ETH ราคา '.number_format($bx_price->{21}->last_price,2).' บาทเด้อ'
 				];
 			
 
