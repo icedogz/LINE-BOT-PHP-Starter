@@ -163,6 +163,20 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 
+			if($text=="จาวิส อัพเดทราคา"){
+				$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
+				$zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1);
+				$messages = [
+			'type' => 'text',
+			'text' => 'อัพเดทราคา
+ETH : '.number_format($bx_price->{21}->last_price,2).' บาท
+BTC : '.number_format($bx_price->{1}->last_price,2).' บาท
+ETC : '.number_format($etc[0]->price_thb,2).' บาท
+ZEC : '.number_format($zec[0]->price_thb,2).' บาท'
+		];
+				$match_count = $match_count+1;
+			}
+
 			if($text=="จาวิส"){
 				$msg = array('เรียกหาซิแตกบ่คับลูกพี่','ครับลูกพี่','ฮ้วยเรียกเฮ็ดหยัง');
 				$k = array_rand($msg);
