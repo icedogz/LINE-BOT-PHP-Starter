@@ -102,7 +102,7 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 
-			if($match_count){
+			if($match_count>0){
 				replyMessage($replyToken,$messages);
 			}
 		}
