@@ -75,10 +75,17 @@ if (!is_null($events['events'])) {
 			];
 
 			$match_count = 0;
-			if($text=="จาวิส ขอราคา ETH"){
+			if($text=="จาวิส ขอราคา ETH" || $text=="จาวิส ขอราคา eth"){
 				$messages = [
 					'type' => 'text',
 					'text' => 'ETH ราคา '.number_format($bx_price->{21}->last_price,2).' บาท เด้อลูกพี่'
+				];	
+				$match_count = $match_count+1;
+			}
+			if($text=="จาวิส ขอราคา BTC" || $text=="จาวิส ขอราคา btc"){
+				$messages = [
+					'type' => 'text',
+					'text' => 'ETH ราคา '.number_format($bx_price->{1}->last_price,2).' บาท เด้อลูกพี่'
 				];	
 				$match_count = $match_count+1;
 			}
