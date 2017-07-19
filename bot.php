@@ -93,6 +93,16 @@ if (!is_null($events['events'])) {
 				];	
 				$match_count = $match_count+1;
 			}
+			if($text=="โตโต้"){
+				$msg = array('กากมากคนนี้','กากกว่านี้ไม่มีแล้ว','กากบักคักหมอนี่');
+				$k = array_rand($msg);
+				$v = $msg[$k];
+				$messages = [
+					'type' => 'text',
+					'text' => $v
+				];	
+				$match_count = $match_count+1;
+			}
 
 			if (preg_match('/จาวิส/',$text) && $match_count==0){
 				$messages = [
