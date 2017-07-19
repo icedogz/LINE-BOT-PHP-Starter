@@ -84,8 +84,9 @@ if (!is_null($events['events'])) {
 			}
 
 			if($text=="จาวิส"){
-				$k = array_rand(array('เรียกหาซิแตกบ่คับลูกพี่','ครับลูกพี่','ฮ้วยเรียกเฮ็ดหยัง'));
-				$v = $array[$k];
+				$msg = array('เรียกหาซิแตกบ่คับลูกพี่','ครับลูกพี่','ฮ้วยเรียกเฮ็ดหยัง');
+				$k = array_rand();
+				$v = $msg[$k];
 				$messages = [
 					'type' => 'text',
 					'text' => $v
