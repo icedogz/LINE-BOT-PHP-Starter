@@ -119,7 +119,7 @@ if (!is_null($events['events'])) {
 				$txt = "";
 				$i=1;
 				foreach($topcoins as $index => $row){
-					$txt .= $i.'. '.$row->name." (".$row->symbol.") $".number_format($row->price_usd)." USD\n";
+					$txt .= $i.'. '.$row->name." (".$row->symbol.") $".number_format($row->price_usd,2)." USD\n";
 					$i++;
 				}
 				
