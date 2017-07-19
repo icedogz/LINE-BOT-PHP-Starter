@@ -187,6 +187,16 @@ ZEC : '.number_format($zec[0]->price_thb,2).' บาท'
 				];	
 				$match_count = $match_count+1;
 			}
+			if(preg_match('/นอน/',$text)){
+				$msg = array('หลับฝันดีเด้อคับ','ฝันดีครับลูกพี่','หลับฝันดีตีกะหรี่ทั้งคืนครับ');
+				$k = array_rand($msg);
+				$v = $msg[$k];
+				$messages = [
+					'type' => 'text',
+					'text' => $v
+				];	
+				$match_count = $match_count+1;
+			}
 			if($text=="โตโต้"){
 				$msg = array('กากมากคนนี้','กากกว่านี้ไม่มีแล้ว','กากบักคักหมอนี่');
 				$k = array_rand($msg);
