@@ -112,6 +112,11 @@ if (!is_null($events['events'])) {
 						$coin_type = 'BTC';
 						$price = $bx_price->{1}->last_price;
 					}
+					if($coin_type=='etc' || $coin_type=="ETC"){
+						$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
+						$coin_type = 'ETC';
+						$price = $etc->price_thb;
+					}
 
 					$messages = [
 						'type' => 'text',
