@@ -97,9 +97,10 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 			if($text=="จาวิส ขอราคา ZEC" || $text=="จาวิส ขอราคา zec" || $text=="จาวิส ราคา ZEC" || $text=="จาวิส ราคา zec"){
+				$zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1);
 				$messages = [
 					'type' => 'text',
-					'text' => 'ZEC ราคา '.number_format($bx_price->{8}->last_price,2).' บาท เด้อลูกพี่'
+					'text' => 'ZEC ราคา '.number_format($zec[0]->price_thb,2).' บาท เด้อลูกพี่'
 				];	
 				$match_count = $match_count+1;
 			}
@@ -132,9 +133,9 @@ if (!is_null($events['events'])) {
 						$price = $etc[0]->price_thb;
 					}
 					if($coin_type=='zec' || $coin_type=="ZEC"){
-						$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
+						$zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1);
 						$coin_type = 'ZEC';
-						$price = $bx_price->{8}->last_price;
+						$price = $zec[0]->price_thb;
 					}
 
 					$messages = [
