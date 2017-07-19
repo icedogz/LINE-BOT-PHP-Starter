@@ -76,8 +76,8 @@ $etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?con
 $messages = [
 			'type' => 'text',
 			'text' => 'อัพเดทราคา
-ETH : '.number_format($bx_price->{21}->last_price,2).'บาท
-BTC : '.number_format($bx_price->{1}->last_price,2).'บาท
+ETH : '.number_format($bx_price->{21}->last_price,2).' บาท
+BTC : '.number_format($bx_price->{1}->last_price,2).' บาท
 ETC : '.number_format($etc[0]->price_thb,2).' บาท'
 		];	
 
