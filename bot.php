@@ -117,8 +117,8 @@ if (!is_null($events['events'])) {
 				$topcoins=callService('https://api.coinmarketcap.com/v1/ticker/?limit=10',1);
 
 				$txt = "";
-				foreach($topcoins as $row){
-					$txt .= $row->name." (".$row->symbol.") $".number_format($row->price_usd)." USD\n";
+				foreach($topcoins as $index => $row){
+					$txt .= $index+1.'. '. $row->name." (".$row->symbol.") $".number_format($row->price_usd)." USD\n";
 				}
 				
 				$messages = [
