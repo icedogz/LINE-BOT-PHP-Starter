@@ -75,17 +75,25 @@ if (!is_null($events['events'])) {
 			];
 
 			$match_count = 0;
-			if($text=="จาวิส ขอราคา ETH" || $text=="จาวิส ขอราคา eth"){
+			if($text=="จาวิส ขอราคา ETH" || $text=="จาวิส ขอราคา eth" || $text=="จาวิส ราคา ETH" || $text=="จาวิส ราคา eth"){
 				$messages = [
 					'type' => 'text',
 					'text' => 'ETH ราคา '.number_format($bx_price->{21}->last_price,2).' บาท เด้อลูกพี่'
 				];	
 				$match_count = $match_count+1;
 			}
-			if($text=="จาวิส ขอราคา BTC" || $text=="จาวิส ขอราคา btc"){
+			if($text=="จาวิส ขอราคา BTC" || $text=="จาวิส ขอราคา btc" || $text=="จาวิส ราคา BTC" || $text=="จาวิส ราคา btc"){
 				$messages = [
 					'type' => 'text',
 					'text' => 'BTC ราคา '.number_format($bx_price->{1}->last_price,2).' บาท เด้อลูกพี่'
+				];	
+				$match_count = $match_count+1;
+			}
+			if($text=="จาวิส ขอราคา ETC" || $text=="จาวิส ขอราคา etc" || $text=="จาวิส ราคา ETC" || $text=="จาวิส ราคา etc"){
+				$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
+				$messages = [
+					'type' => 'text',
+					'text' => 'BTC ราคา '.number_format($etc->price_thb,2).' บาท เด้อลูกพี่'
 				];	
 				$match_count = $match_count+1;
 			}
