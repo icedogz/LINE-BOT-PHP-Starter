@@ -22,13 +22,36 @@ function callService($url,$cache=0){
     return  json_decode($output);    
 }
 
+function replyMessage($replyToken,$messages){
+	$access_token = 'KqbT+kBzOYBY7UJoOqa/ZXcaldF2/wwBkY++L4XdDatpJj+FcT2X5z8GJGEDhKij9I5taNONaFM9TvG+MLAvcyf1/TB+tkkFRhiEtUKw2nxf1t2D/pU8VWRvBppfOvt213geEIRcmqqOc4MSIVbT2QdB04t89/1O/w1cDnyilFU=';
+	// Make a POST Request to Messaging API to reply to sender
+	$url = 'https://api.line.me/v2/bot/message/reply';
+	$data = [
+		'replyToken' => $replyToken,
+		'messages' => [$messages],
+	];
+	$post = json_encode($data);
+	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+	$ch = curl_init($url);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	$result = curl_exec($ch);
+	curl_close($ch);
+
+	echo $result . "\r\n";
+}
+
 $wallet = str_replace('0x', '', $_GET['miner']);
 $bx_price_url = "https://bx.in.th/api/";
 $bx_price = callService($bx_price_url,1);
 
 
 
-$access_token = 'KqbT+kBzOYBY7UJoOqa/ZXcaldF2/wwBkY++L4XdDatpJj+FcT2X5z8GJGEDhKij9I5taNONaFM9TvG+MLAvcyf1/TB+tkkFRhiEtUKw2nxf1t2D/pU8VWRvBppfOvt213geEIRcmqqOc4MSIVbT2QdB04t89/1O/w1cDnyilFU=';
+
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -51,34 +74,32 @@ if (!is_null($events['events'])) {
 				'text' => $text
 			];
 
+			$match_count = 0;
 			if($text=="จาวิส ขอราคา ETH"){
 				$messages = [
 					'type' => 'text',
-					'text' => 'ETH ราคา '.number_format($bx_price->{21}->last_price,2).' บาทเด้อ'
-				];
-			
-
-				// Make a POST Request to Messaging API to reply to sender
-				$url = 'https://api.line.me/v2/bot/message/reply';
-				$data = [
-					'replyToken' => $replyToken,
-					'messages' => [$messages],
-				];
-				$post = json_encode($data);
-				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
-				$ch = curl_init($url);
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				$result = curl_exec($ch);
-				curl_close($ch);
-
-			echo $result . "\r\n";
-
+					'text' => 'ETH ราคา '.number_format($bx_price->{21}->last_price,2).' บาท เด้อลูกพี่'
+				];	
+				$match_count = $match_count+1;
 			}
+
+			if($text=="จาวิส"){
+				$messages = [
+					'type' => 'text',
+					'text' => 'เรียกหาซิแตกบ่คับลูกพี่'
+				];	
+				$match_count = $match_count+1;
+			}
+
+			if (preg_match('/จาวิส/',$text) && $match_count==0){
+				$messages = [
+					'type' => 'text',
+					'text' => 'จักนำเด้อคับลูกพี่'
+				];	
+				$match_count = $match_count+1;
+			}
+
+			replyMessage($replyToken,$messages);
 		}
 	}
 }
