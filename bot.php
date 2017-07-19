@@ -113,6 +113,22 @@ if (!is_null($events['events'])) {
 				}
 			}
 
+			if(preg_match('/จาวิส top coin/',$text)){
+				$topcoins=callService('https://api.coinmarketcap.com/v1/ticker/?limit=10',1);
+
+				$txt = "";
+				foreach($topcoins as $row){
+					$txt .= $row->name." (".$row->symbol.") $".number_format($row->price_usd)." USD
+					";
+				}
+				
+				$messages = [
+					'type' => 'text',
+					'text' => $txt
+				];	
+				$match_count = $match_count+1;
+			}
+
 			if($text=="จาวิส"){
 				$msg = array('เรียกหาซิแตกบ่คับลูกพี่','ครับลูกพี่','ฮ้วยเรียกเฮ็ดหยัง');
 				$k = array_rand($msg);
