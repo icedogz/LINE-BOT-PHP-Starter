@@ -90,7 +90,7 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 
-			if(preg_match('/จาวิส คำนวนราคา/',$text)){
+			if(preg_match('/จาวิส คำนวนราคา/',$text) || preg_match('/จาวิส คำนวน/',$text)){
 				$text_index = explode(' ', $text);
 				if(isset($text_index[2]) && isset($text_index[3])){
 					$amount = (float)$text_index[2];
