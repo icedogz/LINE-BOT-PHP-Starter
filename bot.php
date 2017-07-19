@@ -93,7 +93,7 @@ if (!is_null($events['events'])) {
 				$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
 				$messages = [
 					'type' => 'text',
-					'text' => 'ETC ราคา '.number_format($etc->price_thb,2).' บาท เด้อลูกพี่'
+					'text' => 'ETC ราคา '.number_format($etc[0]->price_thb,2).' บาท เด้อลูกพี่'
 				];	
 				$match_count = $match_count+1;
 			}
