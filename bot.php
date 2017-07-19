@@ -107,7 +107,7 @@ if (!is_null($events['events'])) {
 
 					$messages = [
 						'type' => 'text',
-						'text' => $coin_type.' =  '.number_format($amount * $price,2).' บาท เด้อลูกพี่'
+						'text' => $amount.' '.$coin_type.' =  '.number_format($amount * $price,2).' บาท เด้อลูกพี่'
 					];	
 					$match_count = $match_count+1;
 				}
