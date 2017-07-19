@@ -75,6 +75,13 @@ if (!is_null($events['events'])) {
 			];
 
 			$match_count = 0;
+			if($text=="replyToken"){
+				$messages = [
+					'type' => 'text',
+					'text' => $replyToken
+				];	
+				$match_count = $match_count+1;
+			}
 			if($text=="จาวิส ขอราคา ETH" || $text=="จาวิส ขอราคา eth" || $text=="จาวิส ราคา ETH" || $text=="จาวิส ราคา eth"){
 				$messages = [
 					'type' => 'text',
