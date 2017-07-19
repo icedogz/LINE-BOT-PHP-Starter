@@ -75,10 +75,10 @@ if (!is_null($events['events'])) {
 			];
 
 			$match_count = 0;
-			if($text=="replyToken"){
+			if($text=="Group ID"){
 				$messages = [
 					'type' => 'text',
-					'text' => $replyToken
+					'text' => $event['source']['groupId']
 				];	
 				$match_count = $match_count+1;
 			}
