@@ -85,7 +85,7 @@ if (!is_null($events['events'])) {
 			if($text=="จาวิส ขอราคา BTC" || $text=="จาวิส ขอราคา btc"){
 				$messages = [
 					'type' => 'text',
-					'text' => 'ETH ราคา '.number_format($bx_price->{1}->last_price,2).' บาท เด้อลูกพี่'
+					'text' => 'BTC ราคา '.number_format($bx_price->{1}->last_price,2).' บาท เด้อลูกพี่'
 				];	
 				$match_count = $match_count+1;
 			}
