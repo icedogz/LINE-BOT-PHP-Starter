@@ -45,9 +45,7 @@ function replyMessage($replyToken,$messages){
 	echo $result . "\r\n";
 }
 
-$wallet = str_replace('0x', '', $_GET['miner']);
-$bx_price_url = "https://bx.in.th/api/";
-$bx_price = callService($bx_price_url,1);
+
 
 
 
@@ -63,6 +61,8 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+			$bx_price_url = "https://bx.in.th/api/";
+			$bx_price = callService($bx_price_url,1);
 			// Get text sent
 			$text = $event['message']['text'];
 			// Get replyToken
