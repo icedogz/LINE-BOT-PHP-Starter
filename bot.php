@@ -118,8 +118,7 @@ if (!is_null($events['events'])) {
 
 				$txt = "";
 				foreach($topcoins as $row){
-					$txt .= $row->name." (".$row->symbol.") $".number_format($row->price_usd)." USD
-				";
+					$txt .= $row->name." (".$row->symbol.") $".number_format($row->price_usd)." USD\n";
 				}
 				
 				$messages = [
