@@ -84,9 +84,11 @@ if (!is_null($events['events'])) {
 			}
 
 			if($text=="จาวิส"){
+				$k = array_rand(array('เรียกหาซิแตกบ่คับลูกพี่','ครับลูกพี่','ฮ้วยเรียกเฮ็ดหยัง'));
+				$v = $array[$k];
 				$messages = [
 					'type' => 'text',
-					'text' => 'เรียกหาซิแตกบ่คับลูกพี่'
+					'text' => $v
 				];	
 				$match_count = $match_count+1;
 			}
@@ -94,7 +96,7 @@ if (!is_null($events['events'])) {
 			if (preg_match('/จาวิส/',$text) && $match_count==0){
 				$messages = [
 					'type' => 'text',
-					'text' => 'จักนำเด้อคับลูกพี่'
+					'text' => 'จักนำเด้อคับลูกพี่ จักเว่าพิสังดอก'
 				];	
 				$match_count = $match_count+1;
 			}
