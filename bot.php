@@ -73,6 +73,17 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 
+			if(preg_match('/จาวิส/',$text) && preg_match('/หล่อไหม/',$text)){
+				$msg = array('โอ้ยหน้ายังกะฮวกกบแหม','โอยหน้าคือจังคนปวดขี้นิแมะ','เทียบผมบ่ติดหรอกครับลูกพี่','ขี้ร้ายๆอย่ามาถาม','เฮ็ดหน้าคือขี้คาดากหนิ');
+				$k = array_rand($msg);
+				$v = $msg[$k];
+				$messages = [
+					'type' => 'text',
+					'text' => $v
+				];	
+				$match_count = $match_count+1;
+			}
+
 			if(preg_match('/จาวิส คำนวนราคา/',$text) || preg_match('/จาวิส คำนวน/',$text)){
 				$text_index = explode(' ', $text);
 				if(isset($text_index[2]) && isset($text_index[3])){
