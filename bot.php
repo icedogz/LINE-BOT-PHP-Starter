@@ -112,6 +112,16 @@ if (!is_null($events['events'])) {
 				];	
 				$match_count = $match_count+1;
 			}
+			if($text=="ไผ่"){
+				$msg = array('คนนี้หล่อขั้นเทพ','กรุณาเรียกว่าคุณไผ่นะครับ','หล่อสัสๆ หล่อเหี้ยๆ หล่อกว่านี้ก็โดม ปกร ลัม ละฮะ');
+				$k = array_rand($msg);
+				$v = $msg[$k];
+				$messages = [
+					'type' => 'text',
+					'text' => $v
+				];	
+				$match_count = $match_count+1;
+			}
 
 			if(preg_match('/จาวิส คำนวนราคา/',$text) || preg_match('/จาวิส คำนวน/',$text)){
 				$text_index = explode(' ', $text);
