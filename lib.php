@@ -21,7 +21,7 @@ function callService($url,$cache=0,$format = 'json'){
 	if($format=='json'){
     	return  json_decode($output);    
 	}else if($format == 'xml'){
-		$xml = simplexml_load_string($xml_string);
+		$xml = simplexml_load_string($output);
 		$json = json_encode($xml);
 		return json_decode($json);
 	}else{
