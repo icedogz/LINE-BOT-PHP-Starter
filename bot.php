@@ -179,8 +179,8 @@ ZEC : '.number_format($zec[0]->price_thb,2).' บาท'
 						break;
 					}
 					$text .= $row->title.'
-'.$short_url->id.'
 '.$row->pubDate.'
+'.$short_url->id.'
 
 ';
 					$i++;

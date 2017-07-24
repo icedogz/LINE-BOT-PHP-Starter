@@ -10,7 +10,7 @@ function postJson($url,$data){
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$response  = curl_exec($ch);
 	curl_close($ch);
-	return $response;
+	return  json_decode($response); 
 }
 
 function callService($url,$cache=0,$format = 'json'){
