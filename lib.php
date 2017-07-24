@@ -1,5 +1,5 @@
 <?php 
-function callService($url,$cache=0){
+function callService($url,$cache=0,$format = 'json'){
 	
 
     $cache_file = 'cache/'.md5($url);
@@ -18,8 +18,15 @@ function callService($url,$cache=0){
 	   file_put_contents($cache_file, $output, LOCK_EX);
 	}
 
-
-    return  json_decode($output);    
+	if($format=='json'){
+    	return  json_decode($output);    
+	}else if($format == 'xml'){
+		$xml = simplexml_load_string($xml_string);
+		$json = json_encode($xml);
+		return json_decode($json);
+	}else{
+		return false;
+	}
 }
 
 function replyMessage($replyToken,$messages){
