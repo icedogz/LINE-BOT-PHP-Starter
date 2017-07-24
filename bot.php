@@ -172,12 +172,15 @@ ZEC : '.number_format($zec[0]->price_thb,2).' บาท'
 				$text = '';
 				$i=1;
 				foreach($feed->channel->item as $row){
+					if($i==1){
+						continue;
+					}
+					if($i>4){
+						break;
+					}
 					$short_url = postJson('https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyDojB8lNm0KJgBVD_tE_H4BTM3AbhvTFnQ',[
 						'longUrl'=>$row->link
 					]);
-					if($i>3){
-						break;
-					}
 					$text .= $row->title.'
 '.date('d/m/y',strtotime($row->pubDate)).'
 '.$short_url->id.'
