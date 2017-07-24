@@ -173,6 +173,7 @@ ZEC : '.number_format($zec[0]->price_thb,2).' บาท'
 				$i=1;
 				foreach($feed->channel->item as $row){
 					if($i==1){
+						$i++;
 						continue;
 					}
 					if($i>4){
