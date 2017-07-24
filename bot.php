@@ -171,7 +171,7 @@ ZEC : '.number_format($zec[0]->price_thb,2).' บาท'
 				$feed =callService('https://siamblockchain.com/feed/',1,'xml');
 				$text = '';
 				$i=1;
-				foreach($feed as $row){
+				foreach($feed->channel->item as $row){
 					if($i>3){
 						break;
 					}
