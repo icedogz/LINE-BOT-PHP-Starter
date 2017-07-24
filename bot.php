@@ -167,6 +167,24 @@ ZEC : '.number_format($zec[0]->price_thb,2).' บาท'
 				];	
 				$match_count = $match_count+1;
 			}
+			if($text=="อัพเดทข่าว"){
+				$feed =callService('https://siamblockchain.com/feed/',1,'xml');
+				$text = '';
+				$i=1;
+				foreach($feed as $row){
+					if($i>3){
+						break;
+					}
+					$text .= $row->title.'\n'.$row->link.'\n'.$row->pubDate.'\n\n';
+					$i++;
+				}
+
+				$messages = [
+					'type' => 'text',
+					'text' => $text
+				];	
+				$match_count = $match_count+1;
+			}
 			if(preg_match('/นอน/',$text)){
 				$msg = array('หลับฝันดีเด้อคับ','ฝันดีครับลูกพี่','หลับฝันดีตีกะหรี่ทั้งคืนครับ');
 				$k = array_rand($msg);
