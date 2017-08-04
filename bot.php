@@ -84,6 +84,17 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 
+			if(preg_match('/จาวิส/',$text) && preg_match('/กิ๊ก/',$text)){
+				$msg = array('มีหลายคักหำบ่เคยแห้งหมอหนิ 555','มีหลายจนปั้นหำตากบ่ทันผุ่นแหล่ว');
+				$k = array_rand($msg);
+				$v = $msg[$k];
+				$messages = [
+					'type' => 'text',
+					'text' => $v
+				];	
+				$match_count = $match_count+1;
+			}
+
 			if(preg_match('/จาวิส/',$text) && preg_match('/เป็นไง/',$text)){
 				$msg = array('หน้าไม่คม นมไม่มี ไม่มีอะไรดี ไม่มีเหี้ยอะไรเลย','อย่าแรดให้มากนะน้อง เดี๋ยวจะท้องไม่มีพ่อ');
 				$k = array_rand($msg);
