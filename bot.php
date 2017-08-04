@@ -213,6 +213,16 @@ ZEC : '.number_format($zec[0]->price_thb,2).' บาท'
 				];	
 				$match_count = $match_count+1;
 			}
+			if($text=="เดฟ"){
+				$msg = array('เป็นคนรักเดียวใจเดียว','เป็นคนมั่นคงต่อความรู้สึก','เป็นคนไม่เจ้าชู้','เป็นคนรักจริง แต่ตังไม่มี');
+				$k = array_rand($msg);
+				$v = $msg[$k];
+				$messages = [
+					'type' => 'text',
+					'text' => $v
+				];	
+				$match_count = $match_count+1;
+			}
 
 			if (preg_match('/จาวิส/',$text) && $match_count==0){
 				$msg = array('จักนำเด้อคับลูกพี่','จักเว่าพิสังดอก','ช่วยพูดให้เข้าใจหน่อย','โอ้ย ถามพิสังน้อ');
