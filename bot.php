@@ -224,6 +224,16 @@ ZEC : '.number_format($zec[0]->price_thb,2).' บาท'
 				];	
 				$match_count = $match_count+1;
 			}
+			if($text=="จใครสร้างจาวิส"){
+				$msg = array('ลูกพี่อาทไงคับลูกพี่ผมเองเทพคักคนนี้ ใครอยากใส่โปรแกรมไรให้ผม ลูกพี่บอกขอ 3 ขวดพอ 555');
+				$k = array_rand($msg);
+				$v = $msg[$k];
+				$messages = [
+					'type' => 'text',
+					'text' => $v
+				];	
+				$match_count = $match_count+1;
+			}
 			if($text=="เดฟ"){
 				$msg = array('เป็นคนรักเดียวใจเดียว','เป็นคนมั่นคงต่อความรู้สึก','เป็นคนไม่เจ้าชู้','เป็นคนรักจริง แต่ตังไม่มี');
 				$k = array_rand($msg);
