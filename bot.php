@@ -224,7 +224,7 @@ ZEC : '.number_format($zec[0]->price_thb,2).' บาท'
 				];	
 				$match_count = $match_count+1;
 			}
-			if($text=="จใครสร้างจาวิส"){
+			if($text=="ใครสร้างจาวิส"){
 				$msg = array('ลูกพี่อาทไงคับลูกพี่ผมเองเทพคักคนนี้ ใครอยากใส่โปรแกรมไรให้ผม ลูกพี่บอกขอ 3 ขวดพอ 555');
 				$k = array_rand($msg);
 				$v = $msg[$k];
