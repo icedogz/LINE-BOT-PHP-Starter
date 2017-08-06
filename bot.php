@@ -209,7 +209,7 @@ if (!is_null($events['events'])) {
 ETH - Ethereum
 ราคา '.number_format($bx_price->{21}->last_price,2).' บาท ('.fillPlus($bx_price->{21}->change).')
 
-ETH - Ethereum Classic
+ETC - Ethereum Classic
 ราคา '.number_format($etc[0]->price_thb,2).' บาท ('.fillPlus($etc[0]->percent_change_24h).')
 
 ZEC - Zcash
