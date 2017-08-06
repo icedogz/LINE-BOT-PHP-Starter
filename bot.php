@@ -203,30 +203,29 @@ if (!is_null($events['events'])) {
 				$ltc =callService('https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
-			'text' => 'อัพเดทราคา
-Bitcoin (BTC)
-ราคา '.number_format($bx_price->{1}->last_price,2).' บาท
+			'text' => 'Bitcoin (BTC)
+ราคา '.number_format($bx_price->{1}->last_price,2).' บาท ('.fillPlus($bx_price->{1}->change).')
 
 Ethereum (ETH)
-ราคา '.number_format($bx_price->{21}->last_price,2).' บาท
+ราคา '.number_format($bx_price->{21}->last_price,2).' บาท ('.fillPlus($bx_price->{21}->change).')
 
 Ethereum Classic (ETH)
-ราคา '.number_format($etc[0]->price_thb,2).' บาท
+ราคา '.number_format($etc[0]->price_thb,2).' บาท ('.fillPlus($etc[0]->percent_change_24h).')
 
 Zcash (ZEC)
-ราคา '.number_format($zec[0]->price_thb,2).' บาท
+ราคา '.number_format($zec[0]->price_thb,2).' บาท ('.fillPlus($zec[0]->percent_change_24h).')
 
 Omise GO (OMG)
-ราคา '.number_format($bx_price->{26}->last_price,2).' บาท
+ราคา '.number_format($bx_price->{26}->last_price,2).' บาท ('.fillPlus($bx_price->{26}->change).')
 
 Ripple (XRP)
-ราคา '.number_format($bx_price->{25}->last_price,2).' บาท
+ราคา '.number_format($bx_price->{25}->last_price,2).' บาท ('.fillPlus($bx_price->{25}->change).')
 
 Dash (DAS)
-ราคา : '.number_format($bx_price->{22}->last_price,2).' บาท
+ราคา : '.number_format($bx_price->{22}->last_price,2).' บาท ('.fillPlus($bx_price->{22}->change).')
 
 Litecoin (LTC)
-ราคา : '.number_format($ltc[0]->price_thb,2).' บาท
+ราคา : '.number_format($ltc[0]->price_thb,2).' บาท ('.fillPlus($ltc[0]->percent_change_24h).')
 '
 		];
 				$match_count = $match_count+1;

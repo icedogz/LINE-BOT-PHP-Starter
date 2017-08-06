@@ -89,5 +89,7 @@ function pushMessage($messages){
 	echo $result . "\r\n";
 }
 
-
+function fillPlus($number){
+	return $number> 0 ? '+'.$number : $number;
+}
  ?>
