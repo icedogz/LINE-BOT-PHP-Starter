@@ -204,28 +204,28 @@ if (!is_null($events['events'])) {
 				$messages = [
 			'type' => 'text',
 			'text' => 'BTC - Bitcoin
-'.number_format($bx_price->{1}->last_price,2).' บาท ('.fillPlus($bx_price->{1}->change).')
+'.number_format($bx_price->{1}->last_price,2).' บาท ('.fillPlus($bx_price->{1}->change).'%)
 
 ETH - Ethereum
-'.number_format($bx_price->{21}->last_price,2).' บาท ('.fillPlus($bx_price->{21}->change).')
+'.number_format($bx_price->{21}->last_price,2).' บาท ('.fillPlus($bx_price->{21}->change).'%)
 
 ETC - Ethereum Classic
-'.number_format($etc[0]->price_thb,2).' บาท ('.fillPlus($etc[0]->percent_change_24h).')
+'.number_format($etc[0]->price_thb,2).' บาท ('.fillPlus($etc[0]->percent_change_24h).'%)
 
 ZEC - Zcash
-'.number_format($zec[0]->price_thb,2).' บาท ('.fillPlus($zec[0]->percent_change_24h).')
+'.number_format($zec[0]->price_thb,2).' บาท ('.fillPlus($zec[0]->percent_change_24h).'%)
 
 OMG - Omise GO
-'.number_format($bx_price->{26}->last_price,2).' บาท ('.fillPlus($bx_price->{26}->change).')
+'.number_format($bx_price->{26}->last_price,2).' บาท ('.fillPlus($bx_price->{26}->change).'%)
 
 XRP - Ripple
-'.number_format($bx_price->{25}->last_price,2).' บาท ('.fillPlus($bx_price->{25}->change).')
+'.number_format($bx_price->{25}->last_price,2).' บาท ('.fillPlus($bx_price->{25}->change).'%)
 
 DAS - Dash
-'.number_format($bx_price->{22}->last_price,2).' บาท ('.fillPlus($bx_price->{22}->change).')
+'.number_format($bx_price->{22}->last_price,2).' บาท ('.fillPlus($bx_price->{22}->change).'%)
 
 LTC - Litecoin
-'.number_format($ltc[0]->price_thb,2).' บาท ('.fillPlus($ltc[0]->percent_change_24h).')
+'.number_format($ltc[0]->price_thb,2).' บาท ('.fillPlus($ltc[0]->percent_change_24h).'%)
 '
 		];
 				$match_count = $match_count+1;
