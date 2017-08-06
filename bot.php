@@ -206,25 +206,25 @@ if (!is_null($events['events'])) {
 			'text' => 'Bitcoin (BTC)
 ราคา '.number_format($bx_price->{1}->last_price,2).' บาท ('.fillPlus($bx_price->{1}->change).')
 
-Ethereum (ETH)
+ETH - Ethereum
 ราคา '.number_format($bx_price->{21}->last_price,2).' บาท ('.fillPlus($bx_price->{21}->change).')
 
-Ethereum Classic (ETH)
+ETH - Ethereum Classic
 ราคา '.number_format($etc[0]->price_thb,2).' บาท ('.fillPlus($etc[0]->percent_change_24h).')
 
-Zcash (ZEC)
+ZEC - Zcash
 ราคา '.number_format($zec[0]->price_thb,2).' บาท ('.fillPlus($zec[0]->percent_change_24h).')
 
-Omise GO (OMG)
+OMG - Omise GO
 ราคา '.number_format($bx_price->{26}->last_price,2).' บาท ('.fillPlus($bx_price->{26}->change).')
 
-Ripple (XRP)
+XRP - Ripple
 ราคา '.number_format($bx_price->{25}->last_price,2).' บาท ('.fillPlus($bx_price->{25}->change).')
 
-Dash (DAS)
+DAS - Dash
 ราคา : '.number_format($bx_price->{22}->last_price,2).' บาท ('.fillPlus($bx_price->{22}->change).')
 
-Litecoin (LTC)
+LTC - Litecoin
 ราคา : '.number_format($ltc[0]->price_thb,2).' บาท ('.fillPlus($ltc[0]->percent_change_24h).')
 '
 		];
