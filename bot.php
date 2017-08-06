@@ -203,11 +203,27 @@ if (!is_null($events['events'])) {
 				$messages = [
 			'type' => 'text',
 			'text' => 'อัพเดทราคา
-BTC : '.number_format($bx_price->{1}->last_price,2).' บาท
-ETH : '.number_format($bx_price->{21}->last_price,2).' บาท
-ETC : '.number_format($etc[0]->price_thb,2).' บาท
-ZEC : '.number_format($zec[0]->price_thb,2).' บาท
-OMG : '.number_format($bx_price->{26}->last_price,2).' บาท'
+Bitcoin (BTC)
+ราคา '.number_format($bx_price->{1}->last_price,2).' บาท
+
+Ethereum (ETH)
+ราคา '.number_format($bx_price->{21}->last_price,2).' บาท
+
+Ethereum Classic (ETH)
+ราคา '.number_format($etc[0]->price_thb,2).' บาท
+
+Zcash (ZEC)
+ราคา '.number_format($zec[0]->price_thb,2).' บาท
+
+Omise GO (OMG)
+ราคา '.number_format($bx_price->{26}->last_price,2).' บาท
+
+Ripple (XRP)
+ราคา '.number_format($bx_price->{25}->last_price,2).' บาท
+
+Dash (DAS)
+ราคา : '.number_format($bx_price->{22}->last_price,2).' บาท
+'
 		];
 				$match_count = $match_count+1;
 			}
