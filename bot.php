@@ -171,6 +171,14 @@ if (!is_null($events['events'])) {
 						$coin_type = 'ZEC';
 						$price = $zec[0]->price_thb;
 					}
+					if($coin_type=='xrp' || $coin_type=="XRP"){
+						$coin_type = 'XRP';
+						$price = $bx_price->{25}->last_price;
+					}
+					if($coin_type=='omg' || $coin_type=="OMG"){
+						$coin_type = 'OMG';
+						$price = $bx_price->{26}->last_price;
+					}
 
 					$messages = [
 						'type' => 'text',
