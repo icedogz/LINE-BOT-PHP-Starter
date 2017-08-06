@@ -203,7 +203,7 @@ if (!is_null($events['events'])) {
 				$ltc =callService('https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
-			'text' => 'Bitcoin (BTC)
+			'text' => 'BTC - Bitcoin
 ราคา '.number_format($bx_price->{1}->last_price,2).' บาท ('.fillPlus($bx_price->{1}->change).')
 
 ETH - Ethereum
