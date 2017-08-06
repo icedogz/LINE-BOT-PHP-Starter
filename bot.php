@@ -200,6 +200,7 @@ if (!is_null($events['events'])) {
 			if($text=="จาวิส อัพเดทราคา" || preg_match('/อัพเดทราคา/',$text)){
 				$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
 				$zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1);
+				$ltc =callService('https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
 			'text' => 'อัพเดทราคา
@@ -223,6 +224,9 @@ Ripple (XRP)
 
 Dash (DAS)
 ราคา : '.number_format($bx_price->{22}->last_price,2).' บาท
+
+Litecoin (LTC)
+ราคา : '.number_format($ltc[0]->price_thb,2).' บาท
 '
 		];
 				$match_count = $match_count+1;
