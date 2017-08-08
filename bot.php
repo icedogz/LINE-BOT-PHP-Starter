@@ -179,6 +179,11 @@ if (!is_null($events['events'])) {
 						$coin_type = 'OMG';
 						$price = $bx_price->{26}->last_price;
 					}
+					if($coin_type=='sigt' || $coin_type=="SIGT"){
+						$sigt =callService('https://www.cryptopia.co.nz/api/GetMarket/SIGT_BTC',1);
+						$coin_type = 'SIGT';
+						$price = $sigt->Data->LastPrice*$bx_price->{1}->last_price;
+					}
 
 					$messages = [
 						'type' => 'text',
