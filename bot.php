@@ -154,7 +154,7 @@ if (!is_null($events['events'])) {
 				$hashrate = $text_index[2];
 				$message = "";
 				foreach ($coins as $key => $row) {
-					$userRatio = $hashrate*1e6 / $row->nethash;
+					$userRatio = $hashrate*1000000 / $row->nethash;
 					$blocksPerMin = 60.0 / $row->block_time;
 					$ethPerMin = $blocksPerMin * $row->block_reward;
 
