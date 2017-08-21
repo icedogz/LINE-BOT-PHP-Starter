@@ -157,7 +157,7 @@ if (!is_null($events['events'])) {
 
 				foreach ($coins->coins as $key => $row) {
 
-					if($type=="แดง" && !$row->algorithm!="Ethash"){
+					if($type=="แดง" && $row->algorithm!="Ethash"){
 						continue;
 					}
 
@@ -188,7 +188,7 @@ if (!is_null($events['events'])) {
 
 				$messages = [
 					'type' => 'text',
-					'text' => "แรงขุด ".$hashrate." ".$unit." ได้
+					'text' => "แรงขุด ".$hashrate."".$unit." ได้
 ". $message
 				];	
 				$match_count = $match_count+1;
