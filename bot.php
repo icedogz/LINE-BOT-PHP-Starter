@@ -155,6 +155,10 @@ if (!is_null($events['events'])) {
 				$hashrate = $text_index[3];
 				$message = "";
 
+				if($type=="" || $hashrate==""){
+					exit;
+				}
+
 				foreach ($coins->coins as $key => $row) {
 
 					if($type=="แดง" && $row->algorithm!="Ethash"){
