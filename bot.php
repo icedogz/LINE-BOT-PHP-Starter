@@ -161,7 +161,7 @@ if (!is_null($events['events'])) {
 
 				$type = strtolower($type);
 
-				$allowed_types = ['แดง','เขียว','เขียวlbc','sigt']
+				$allowed_types = ['แดง','เขียว','เขียวlbc','sigt'];
 
 				if(!in_array($type, $allowed_types)){
 					exit;
