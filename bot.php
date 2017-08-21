@@ -151,10 +151,17 @@ if (!is_null($events['events'])) {
 			if(preg_match('/จาวิส แรงขุด/',$text)){
 				$text_index = explode(' ', $text);
 				$coins = callService('https://whattomine.com/coins.json',1);
-				$hashrate = $text_index[2];
+				$type = $text_index[2];
+				$hashrate = $text_index[3];
 				$message = "";
 
 				foreach ($coins->coins as $key => $row) {
+
+					if($type=="แดง" && !$row->algorithm!="Ethash"){
+						continue;
+					}
+
+
 					$userRatio = $hashrate*1000000 / $row->nethash;
 					$blocksPerMin = 60.0 / $row->block_time;
 					$ethPerMin = $blocksPerMin * $row->block_reward;
@@ -174,7 +181,8 @@ if (!is_null($events['events'])) {
 
 				$messages = [
 					'type' => 'text',
-					'text' => $message
+					'text' => "แรงขุด ".$hashrate." ได้
+". $message
 				];	
 				$match_count = $match_count+1;
 			}
