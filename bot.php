@@ -170,14 +170,18 @@ if (!is_null($events['events'])) {
 						continue;
 					}
 
+					$multiply_hash = 1000000;
+					if($row->algorithm!="Ethash"){
+						$multiply_hash = 0;
+					}
 
 					$userRatio = $hashrate*1000000 / $row->nethash;
 					$blocksPerMin = 60.0 / $row->block_time;
-					$ethPerMin = $blocksPerMin * $row->block_reward;
+					$coinPerMin = $blocksPerMin * $row->block_reward;
 
 					$price = $row->exchange_rate*$bx_price->{1}->last_price;//btc
 
-					$earnings_min = $userRatio * $ethPerMin;
+					$earnings_min = $userRatio * $coinPerMin;
 					$earnings_hour = $earnings_min * 60;
 					$earnings_day = $earnings_hour * 24;
 					$earnings_week = $earnings_day * 7;
@@ -194,7 +198,7 @@ if (!is_null($events['events'])) {
 					$unit = " Mh/s";
 				}
 				if($type=="เขียว"){
-					$unit = " Sol/s";
+					$unit = " Sols/s";
 				}
 
 
