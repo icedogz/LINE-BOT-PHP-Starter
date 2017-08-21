@@ -160,6 +160,9 @@ if (!is_null($events['events'])) {
 					if($type=="แดง" && $row->algorithm!="Ethash"){
 						continue;
 					}
+					if($row->tag=="NICEHASH"){
+						continue;
+					}
 
 
 					$userRatio = $hashrate*1000000 / $row->nethash;
@@ -175,7 +178,7 @@ if (!is_null($events['events'])) {
 					$earnings_month = $earnings_day * 30;
 					$earnings_year = $earnings_day * 365;
 
-					$message .= $row->tag." ".number_format($earnings_day*$price)." บาท/วัน
+					$message .= $row->tag." = ".number_format($earnings_day*$price)." บาท/วัน
 ";
 				}
 
