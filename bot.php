@@ -172,7 +172,7 @@ if (!is_null($events['events'])) {
 
 					$multiply_hash = 1000000;
 					if($row->algorithm!="Ethash"){
-						$multiply_hash = 0;
+						$multiply_hash = 1;
 					}
 
 					$userRatio = $hashrate*$multiply_hash / $row->nethash;
