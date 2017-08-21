@@ -172,7 +172,7 @@ if (!is_null($events['events'])) {
 				}
 				$messages = [
 					'type' => 'text',
-					'text' => $message;
+					'text' => $message
 				];	
 				$match_count = $match_count+1;
 			}
