@@ -153,7 +153,8 @@ if (!is_null($events['events'])) {
 				$coins = callService('https://whattomine.com/coins.json',1);
 				$hashrate = $text_index[2];
 				$message = "";
-				foreach ($coins as $key => $row) {
+
+				foreach ($coins->coins as $key => $row) {
 					$userRatio = $hashrate*1000000 / $row->nethash;
 					$blocksPerMin = 60.0 / $row->block_time;
 					$ethPerMin = $blocksPerMin * $row->block_reward;
@@ -170,6 +171,7 @@ if (!is_null($events['events'])) {
 					$message .= $row->tag." ".number_format($earnings_day*$price)." บาท/วัน
 ";
 				}
+
 				$messages = [
 					'type' => 'text',
 					'text' => $message
