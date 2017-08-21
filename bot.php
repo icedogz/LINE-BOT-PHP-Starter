@@ -32,6 +32,8 @@ if (!is_null($events['events'])) {
 				];	
 				$match_count = $match_count+1;
 			}
+			
+
 			if($text=="จาวิส ขอราคา ETH" || $text=="จาวิส ขอราคา eth" || $text=="จาวิส ราคา ETH" || $text=="จาวิส ราคา eth"){
 				$messages = [
 					'type' => 'text',
@@ -146,6 +148,34 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 
+			if(preg_match('/จาวิส แรงขุด/',$text)){
+				$text_index = explode(' ', $text);
+				$coins = callService('https://whattomine.com/coins.json',1);
+				$hashrate = $text_index[2];
+				$message = "";
+				foreach ($coins as $key => $row) {
+					$userRatio = $hashrate*1e6 / $row->nethash;
+					$blocksPerMin = 60.0 / $row->block_time;
+					$ethPerMin = $blocksPerMin * $row->block_reward;
+
+					$price = $row->exchange_rate*$bx_price->{1}->last_price;//btc
+
+					$earnings_min = $userRatio * $ethPerMin;
+					$earnings_hour = $earnings_min * 60;
+					$earnings_day = $earnings_hour * 24;
+					$earnings_week = $earnings_day * 7;
+					$earnings_month = $earnings_day * 30;
+					$earnings_year = $earnings_day * 365;
+
+					$message .= $row->tag." ".number_format($earnings_day*$price)." บาท/วัน
+";
+				}
+				$messages = [
+					'type' => 'text',
+					'text' => $message;
+				];	
+				$match_count = $match_count+1;
+			}
 
 			if(preg_match('/จาวิส คำนวนราคา/',$text) || preg_match('/จาวิส คำนวน/',$text)){
 				$text_index = explode(' ', $text);
