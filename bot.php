@@ -161,6 +161,12 @@ if (!is_null($events['events'])) {
 
 				$type = strtolower($type);
 
+				$allowed_types = ['แดง','เขียว','เขียวlbc','sigt']
+
+				if(!in_array($type, $allowed_types)){
+					exit;
+				}
+
 				foreach ($coins->coins as $key => $row) {
 
 					if($type=="แดง" && $row->algorithm!="Ethash"){
