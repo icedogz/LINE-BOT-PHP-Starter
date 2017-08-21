@@ -159,6 +159,8 @@ if (!is_null($events['events'])) {
 					exit;
 				}
 
+				$type = strtolower($type);
+
 				foreach ($coins->coins as $key => $row) {
 
 					if($type=="แดง" && $row->algorithm!="Ethash"){
@@ -167,7 +169,10 @@ if (!is_null($events['events'])) {
 					if($type=="เขียว" && $row->algorithm!="Equihash"){
 						continue;
 					}
-					if($type=="เขียวLBC" && $row->algorithm!="LBRY"){
+					if($type=="เขียวlbc" && $row->algorithm!="LBRY"){
+						continue;
+					}
+					if($type=="sigt" && $row->algorithm!="Skunkhash"){
 						continue;
 					}
 					if($row->tag=="NICEHASH"){
@@ -175,7 +180,7 @@ if (!is_null($events['events'])) {
 					}
 
 					$multiply_hash = 1;
-					if($row->algorithm=="Ethash" || $row->algorithm=="LBRY"){
+					if($row->algorithm=="Ethash" || $row->algorithm=="LBRY" || $row->algorithm=="Skunkhash"){
 						$multiply_hash = 1000000;
 					}
 
