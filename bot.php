@@ -179,9 +179,16 @@ if (!is_null($events['events'])) {
 ";
 				}
 
+				$unit = "";
+
+				if($type=="แดง"){
+					$unit = " Mh/s";
+				}
+
+
 				$messages = [
 					'type' => 'text',
-					'text' => "แรงขุด ".$hashrate." ได้
+					'text' => "แรงขุด ".$hashrate." ".$unit." ได้
 ". $message
 				];	
 				$match_count = $match_count+1;
