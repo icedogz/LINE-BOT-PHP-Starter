@@ -175,7 +175,7 @@ if (!is_null($events['events'])) {
 						$multiply_hash = 0;
 					}
 
-					$userRatio = $hashrate*1000000 / $row->nethash;
+					$userRatio = $hashrate*$multiply_hash / $row->nethash;
 					$blocksPerMin = 60.0 / $row->block_time;
 					$coinPerMin = $blocksPerMin * $row->block_reward;
 
