@@ -160,6 +160,12 @@ if (!is_null($events['events'])) {
 					if($type=="แดง" && $row->algorithm!="Ethash"){
 						continue;
 					}
+					if($type=="เขียว" && $row->algorithm!="Equihash"){
+						continue;
+					}
+					if($type=="เขียวLBC" && $row->algorithm!="LBRY"){
+						continue;
+					}
 					if($row->tag=="NICEHASH"){
 						continue;
 					}
@@ -184,8 +190,11 @@ if (!is_null($events['events'])) {
 
 				$unit = "";
 
-				if($type=="แดง"){
+				if($type=="แดง" || $type=="เขียวLBC"){
 					$unit = " Mh/s";
+				}
+				if($type=="เขียว"){
+					$unit = " Sol/s";
 				}
 
 
