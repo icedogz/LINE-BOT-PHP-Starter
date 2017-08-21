@@ -171,7 +171,7 @@ if (!is_null($events['events'])) {
 					}
 
 					$multiply_hash = 1000000;
-					if($row->algorithm!="Ethash"){
+					if($row->algorithm!="Ethash" || $row->algorithm!="LBRY"){
 						$multiply_hash = 1;
 					}
 
