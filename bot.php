@@ -207,7 +207,7 @@ if (!is_null($events['events'])) {
 
 					$message .= $row->tag."
 ราบได้ต่อวัน = ".number_format($earnings_day*$price)."
-จำนวนเหรียญต่อวัน = ".$coinPerDay." เหรียญ
+จำนวนเหรียญต่อวัน = ".number_format($coinPerDay,2)." เหรียญ
 
 ";
 				}
