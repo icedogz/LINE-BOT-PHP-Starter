@@ -193,8 +193,6 @@ if (!is_null($events['events'])) {
 					$userRatio = $hashrate*$multiply_hash / $row->nethash;
 					$blocksPerMin = 60.0 / $row->block_time;
 					$coinPerMin = $blocksPerMin * $row->block_reward;
-					$coinPerHr = $coinPerMin*30;
-					$coinPerDay = $coinPerHr*24;
 
 					$price = $row->exchange_rate*$bx_price->{1}->last_price;//btc
 
@@ -206,8 +204,8 @@ if (!is_null($events['events'])) {
 					$earnings_year = $earnings_day * 365;
 
 					$message .= $row->tag."
-ราบได้ต่อวัน = ".number_format($earnings_day*$price)."
-จำนวนเหรียญต่อวัน = ".number_format($coinPerDay,2)." เหรียญ
+รายได้ต่อวัน = ".number_format($earnings_day*$price)."
+จำนวนเหรียญต่อวัน = ".number_format($earnings_day,2)." เหรียญ
 
 ";
 				}
@@ -225,6 +223,7 @@ if (!is_null($events['events'])) {
 				$messages = [
 					'type' => 'text',
 					'text' => "แรงขุด ".$hashrate."".$unit." ได้
+
 ". $message
 				];	
 				$match_count = $match_count+1;
