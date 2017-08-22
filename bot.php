@@ -204,8 +204,8 @@ if (!is_null($events['events'])) {
 					$earnings_year = $earnings_day * 365;
 
 					$message .= $row->tag."
-รายได้ต่อวัน = ".number_format($earnings_day*$price)."
-จำนวนเหรียญต่อวัน = ".number_format($earnings_day,2)." เหรียญ
+รายได้ต่อวัน = ".number_format($earnings_day*$price)." บาท
+เหรียญต่อวัน = ".number_format($earnings_day,2)." เหรียญ
 
 ";
 				}
