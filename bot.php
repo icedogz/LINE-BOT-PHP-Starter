@@ -193,6 +193,8 @@ if (!is_null($events['events'])) {
 					$userRatio = $hashrate*$multiply_hash / $row->nethash;
 					$blocksPerMin = 60.0 / $row->block_time;
 					$coinPerMin = $blocksPerMin * $row->block_reward;
+					$coinPerHr = $coinPerMin*30;
+					$coinPerDay = $coinPerHr*24;
 
 					$price = $row->exchange_rate*$bx_price->{1}->last_price;//btc
 
@@ -203,7 +205,10 @@ if (!is_null($events['events'])) {
 					$earnings_month = $earnings_day * 30;
 					$earnings_year = $earnings_day * 365;
 
-					$message .= $row->tag." = ".number_format($earnings_day*$price)." บาท/วัน
+					$message .= $row->tag."
+ราบได้ต่อวัน = ".number_format($earnings_day*$price)."
+จำนวนเหรียญต่อวัน = ".$coinPerDay." เหรียญ
+
 ";
 				}
 
