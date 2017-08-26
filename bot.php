@@ -225,8 +225,8 @@ if (!is_null($events['events'])) {
 
 				$messages = [
 					'type' => 'text',
-					'text' => "แรงขุด ".$hashrate."".$unit." ได้
-
+					'text' => "Algorithm ".$row->algorithm." 
+แรงขุด ".$hashrate."".$unit." ได้
 ". $message
 				];	
 				$match_count = $match_count+1;
