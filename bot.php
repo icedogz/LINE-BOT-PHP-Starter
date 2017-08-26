@@ -161,7 +161,7 @@ if (!is_null($events['events'])) {
 
 				$type = strtolower($type);
 
-				$allowed_types = ['แดง','เขียว','เขียวlbc','sigt'];
+				$allowed_types = ['แดง','เขียว','เขียวlbc','sigt','xmr'];
 
 				if(!in_array($type, $allowed_types)){
 					exit;
@@ -179,6 +179,9 @@ if (!is_null($events['events'])) {
 						continue;
 					}
 					if($type=="sigt" && $row->algorithm!="Skunkhash"){
+						continue;
+					}
+					if($type=="xmr" && $row->algorithm!="CryptoNight"){
 						continue;
 					}
 					if($row->tag=="NICEHASH"){
