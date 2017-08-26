@@ -269,6 +269,11 @@ if (!is_null($events['events'])) {
 						$coin_type = 'SIGT';
 						$price = $sigt->Data->LastPrice*$bx_price->{1}->last_price;
 					}
+					if($coin_type=='xmr' || $coin_type=="XMR"){
+						$xmr =callService('https://api.coinmarketcap.com/v1/ticker/monero/?convert=THB',1);
+						$coin_type = 'XMR';
+						$price = $xmr[0]->price_thb;
+					}
 
 					$messages = [
 						'type' => 'text',
