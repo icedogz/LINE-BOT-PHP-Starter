@@ -300,6 +300,7 @@ if (!is_null($events['events'])) {
 				$zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1);
 				$ltc =callService('https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=THB',1);
 				$sigt =callService('https://www.cryptopia.co.nz/api/GetMarket/SIGT_BTC',1);
+				$xmr =callService('https://api.coinmarketcap.com/v1/ticker/monero/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
 			'text' => 'BTC - Bitcoin
@@ -328,6 +329,9 @@ LTC - Litecoin
 
 SIGT - Signatum
 '.number_format($sigt->Data->LastPrice*$bx_price->{1}->last_price,2).' บาท ('.fillPlus($sigt->Data->Change).'%)
+
+XMR - Monero
+'.number_format($xmr[0]->price_thb,2).' บาท ('.fillPlus($xmr[0]->percent_change_24h).'%)
 '
 		];
 				$match_count = $match_count+1;
