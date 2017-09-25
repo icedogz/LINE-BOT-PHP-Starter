@@ -311,7 +311,7 @@ if (!is_null($events['events'])) {
 				$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
 				$zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1);
 				$ltc =callService('https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=THB',1);
-				$sigt =callService('https://www.cryptopia.co.nz/api/GetMarket/SIGT_BTC',1);
+				//$sigt =callService('https://www.cryptopia.co.nz/api/GetMarket/SIGT_BTC',1);
 				$xmr =callService('https://api.coinmarketcap.com/v1/ticker/monero/?convert=THB',1);
 				$knc =callService('https://api.coinmarketcap.com/v1/ticker/kyber-network/?convert=THB',1);
 				$messages = [
@@ -344,7 +344,7 @@ XMR - Monero
 '.number_format($xmr[0]->price_thb,2).' บาท ('.fillPlus($xmr[0]->percent_change_24h).'%)
 
 KNC - Kyber Network
-'.number_format($knc[0]->price_thb,2).' บาท ('.fillPlus($knc[0]->percent_change_24h).'%)
+'.number_format($knc[0]->price_thb,2).' บาท ('.(float)fillPlus($knc[0]->percent_change_24h).'%)
 
 '
 		];
