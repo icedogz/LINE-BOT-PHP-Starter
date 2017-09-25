@@ -167,6 +167,8 @@ if (!is_null($events['events'])) {
 					exit;
 				}
 
+				$display_algorithm = "";
+
 				foreach ($coins->coins as $key => $row) {
 
 					if($type=="แดง" && $row->algorithm!="Ethash"){
@@ -191,6 +193,7 @@ if (!is_null($events['events'])) {
 					$multiply_hash = 1;
 					if($row->algorithm=="Ethash" || $row->algorithm=="LBRY" || $row->algorithm=="Skunkhash"){
 						$multiply_hash = 1000000;
+						$display_algorithm = $row->algorithm;
 					}
 
 					$userRatio = $hashrate*$multiply_hash / $row->nethash;
@@ -217,15 +220,19 @@ if (!is_null($events['events'])) {
 
 				if($type=="แดง" || $type=="เขียวLBC"){
 					$unit = " Mh/s";
+					$display_algorithm = $row->algorithm;
 				}
 				if($type=="เขียว"){
 					$unit = " Sols/s";
+					$display_algorithm = $row->algorithm;
 				}
-
+				if($type=="เขียวLBC"){
+					$display_algorithm = $row->algorithm;
+				}
 
 				$messages = [
 					'type' => 'text',
-					'text' => "Algorithm ".$row->algorithm." 
+					'text' => "Algorithm ".$display_algorithm." 
 แรงขุด ".$hashrate."".$unit." ได้
 ". $message
 				];	
@@ -306,6 +313,7 @@ if (!is_null($events['events'])) {
 				$ltc =callService('https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=THB',1);
 				$sigt =callService('https://www.cryptopia.co.nz/api/GetMarket/SIGT_BTC',1);
 				$xmr =callService('https://api.coinmarketcap.com/v1/ticker/monero/?convert=THB',1);
+				$knc =callService('https://api.coinmarketcap.com/v1/ticker/kyber-network/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
 			'text' => 'BTC - Bitcoin
@@ -332,11 +340,12 @@ DAS - Dash
 LTC - Litecoin
 '.number_format($ltc[0]->price_thb,2).' บาท ('.fillPlus($ltc[0]->percent_change_24h).'%)
 
-SIGT - Signatum
-'.number_format($sigt->Data->LastPrice*$bx_price->{1}->last_price,2).' บาท ('.fillPlus($sigt->Data->Change).'%)
-
 XMR - Monero
 '.number_format($xmr[0]->price_thb,2).' บาท ('.fillPlus($xmr[0]->percent_change_24h).'%)
+
+KNC - Kyber Network
+'.number_format($knc[0]->price_thb,2).' บาท ('.fillPlus($knc[0]->percent_change_24h).'%)
+
 '
 		];
 				$match_count = $match_count+1;
