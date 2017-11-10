@@ -229,7 +229,7 @@ if (!is_null($events['events'])) {
 				if($type=="เขียวLBC"){
 					$display_algorithm = 'LBRY';
 				}
-				if($type=="nc"){
+				if($type=="cn"){
 					$display_algorithm = 'CryptoNight';
 				}
 
