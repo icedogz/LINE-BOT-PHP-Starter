@@ -161,7 +161,7 @@ if (!is_null($events['events'])) {
 
 				$type = strtolower($type);
 
-				$allowed_types = ['แดง','เขียว','เขียวlbc','sigt','xmr'];
+				$allowed_types = ['แดง','เขียว','เขียวlbc','sigt','cn'];
 
 				if(!in_array($type, $allowed_types)){
 					exit;
@@ -183,7 +183,7 @@ if (!is_null($events['events'])) {
 					if($type=="sigt" && $row->algorithm!="Skunkhash"){
 						continue;
 					}
-					if($type=="xmr" && $row->algorithm!="CryptoNight"){
+					if($type=="cn" && $row->algorithm!="CryptoNight"){
 						continue;
 					}
 					if($row->tag=="NICEHASH"){
@@ -220,14 +220,17 @@ if (!is_null($events['events'])) {
 
 				if($type=="แดง" || $type=="เขียวLBC"){
 					$unit = " Mh/s";
-					$display_algorithm = $row->algorithm;
+					$display_algorithm = 'Ethash';
 				}
 				if($type=="เขียว"){
 					$unit = " Sols/s";
-					$display_algorithm = $row->algorithm;
+					$display_algorithm = 'Equihash';
 				}
 				if($type=="เขียวLBC"){
-					$display_algorithm = $row->algorithm;
+					$display_algorithm = 'LBRY';
+				}
+				if($type=="nc"){
+					$display_algorithm = 'CryptoNight';
 				}
 
 				$messages = [
