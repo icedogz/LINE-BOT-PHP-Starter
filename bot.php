@@ -322,6 +322,9 @@ if (!is_null($events['events'])) {
 			'text' => 'BTC - Bitcoin
 '.number_format($bx_price->{1}->last_price,2).' บาท ('.fillPlus($bx_price->{1}->change).'%)
 
+BCH - Bitcoin Cash
+'.number_format($bx_price->{27}->last_price,2).' บาท ('.fillPlus($bx_price->{27}->change).'%)
+
 ETH - Ethereum
 '.number_format($bx_price->{21}->last_price,2).' บาท ('.fillPlus($bx_price->{21}->change).'%)
 
