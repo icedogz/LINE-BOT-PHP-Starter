@@ -320,7 +320,7 @@ if (!is_null($events['events'])) {
 				$btg =callService('https://api.coinmarketcap.com/v1/ticker/bitcoin-gold/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
-			'text' => 'BTC - ฿'.number_format($bx_price->{1}->last_price,2).' ('.fillPlus($bx_price->{1}->change).'%)
+			'text' => 'BTC - ฿'.number_format($bx_price->{1}->last_price,0).' ('.fillPlus($bx_price->{1}->change).'%)
 BCH - ฿'.number_format($bx_price->{27}->last_price,0).' ('.fillPlus($bx_price->{27}->change).'%)
 BTG - ฿'.number_format($btg[0]->price_thb,0).' ('.(float)fillPlus($btg[0]->percent_change_24h).'%)
 ETH - ฿'.number_format($bx_price->{21}->last_price,0).' ('.fillPlus($bx_price->{21}->change).'%)
