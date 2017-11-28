@@ -317,41 +317,21 @@ if (!is_null($events['events'])) {
 				//$sigt =callService('https://www.cryptopia.co.nz/api/GetMarket/SIGT_BTC',1);
 				$xmr =callService('https://api.coinmarketcap.com/v1/ticker/monero/?convert=THB',1);
 				$knc =callService('https://api.coinmarketcap.com/v1/ticker/kyber-network/?convert=THB',1);
+				$btg =callService('https://api.coinmarketcap.com/v1/ticker/bitcoin-gold/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
-			'text' => 'BTC - Bitcoin
-'.number_format($bx_price->{1}->last_price,2).' บาท ('.fillPlus($bx_price->{1}->change).'%)
-
-BCH - Bitcoin Cash
-'.number_format($bx_price->{27}->last_price,2).' บาท ('.fillPlus($bx_price->{27}->change).'%)
-
-ETH - Ethereum
-'.number_format($bx_price->{21}->last_price,2).' บาท ('.fillPlus($bx_price->{21}->change).'%)
-
-ETC - Ethereum Classic
-'.number_format($etc[0]->price_thb,2).' บาท ('.fillPlus($etc[0]->percent_change_24h).'%)
-
-ZEC - Zcash
-'.number_format($zec[0]->price_thb,2).' บาท ('.fillPlus($zec[0]->percent_change_24h).'%)
-
-OMG - Omise GO
-'.number_format($bx_price->{26}->last_price,2).' บาท ('.fillPlus($bx_price->{26}->change).'%)
-
-XRP - Ripple
-'.number_format($bx_price->{25}->last_price,2).' บาท ('.fillPlus($bx_price->{25}->change).'%)
-
-DAS - Dash
-'.number_format($bx_price->{22}->last_price,2).' บาท ('.fillPlus($bx_price->{22}->change).'%)
-
-LTC - Litecoin
-'.number_format($ltc[0]->price_thb,2).' บาท ('.fillPlus($ltc[0]->percent_change_24h).'%)
-
-XMR - Monero
-'.number_format($xmr[0]->price_thb,2).' บาท ('.fillPlus($xmr[0]->percent_change_24h).'%)
-
-KNC - Kyber Network
-'.number_format($knc[0]->price_thb,2).' บาท ('.(float)fillPlus($knc[0]->percent_change_24h).'%)
-
+			'text' => 'BTC '.number_format($bx_price->{1}->last_price,2).'฿ ('.fillPlus($bx_price->{1}->change).'%)
+BCH '.number_format($bx_price->{27}->last_price,2).'฿ ('.fillPlus($bx_price->{27}->change).'%)
+BTG '.number_format($btg[0]->price_thb,2).'฿ ('.(float)fillPlus($btg[0]->percent_change_24h).'%)
+ETH '.number_format($bx_price->{21}->last_price,2).'฿ ('.fillPlus($bx_price->{21}->change).'%)
+ETC '.number_format($etc[0]->price_thb,2).'฿ ('.fillPlus($etc[0]->percent_change_24h).'%)
+ZEC '.number_format($zec[0]->price_thb,2).'฿ ('.fillPlus($zec[0]->percent_change_24h).'%)
+OMG '.number_format($bx_price->{26}->last_price,2).'฿ ('.fillPlus($bx_price->{26}->change).'%)
+XRP '.number_format($bx_price->{25}->last_price,2).'฿ ('.fillPlus($bx_price->{25}->change).'%)
+DAS '.number_format($bx_price->{22}->last_price,2).'฿ ('.fillPlus($bx_price->{22}->change).'%)
+LTC '.number_format($ltc[0]->price_thb,2).'฿ ('.fillPlus($ltc[0]->percent_change_24h).'%)
+XMR '.number_format($xmr[0]->price_thb,2).'฿ ('.fillPlus($xmr[0]->percent_change_24h).'%)
+KNC '.number_format($knc[0]->price_thb,2).'฿ ('.(float)fillPlus($knc[0]->percent_change_24h).'%)
 '
 		];
 				$match_count = $match_count+1;
