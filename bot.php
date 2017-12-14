@@ -318,6 +318,7 @@ if (!is_null($events['events'])) {
 				$xmr =callService('https://api.coinmarketcap.com/v1/ticker/monero/?convert=THB',1);
 				$knc =callService('https://api.coinmarketcap.com/v1/ticker/kyber-network/?convert=THB',1);
 				$btg =callService('https://api.coinmarketcap.com/v1/ticker/bitcoin-gold/?convert=THB',1);
+				$etn =callService('https://api.coinmarketcap.com/v1/ticker/electroneum/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
 			'text' => 'BTC - ฿'.number_format($bx_price->{1}->last_price,0).' ('.fillPlus($bx_price->{1}->change).'%)
@@ -332,6 +333,7 @@ LTC - ฿'.number_format($ltc[0]->price_thb,0).' ('.fillPlus($ltc[0]->percent_ch
 XMR - ฿'.number_format($xmr[0]->price_thb,0).' ('.fillPlus($xmr[0]->percent_change_24h).'%)
 OMG - ฿'.number_format($bx_price->{26}->last_price,0).' ('.fillPlus($bx_price->{26}->change).'%)
 KNC - ฿'.number_format($knc[0]->price_thb,2).' ('.(float)fillPlus($knc[0]->percent_change_24h).'%)
+ETN - ฿'.number_format($etn[0]->price_thb,2).' ('.(float)fillPlus($etn[0]->percent_change_24h).'%)
 '
 		];
 				$match_count = $match_count+1;
