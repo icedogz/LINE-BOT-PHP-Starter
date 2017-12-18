@@ -357,7 +357,7 @@ ETN - ฿'.number_format($etn[0]->price_thb,2).' ('.(float)fillPlus($etn[0]->per
 				];	
 				$match_count = $match_count+1;
 			}
-			if($text=="อัพเดทข่าว"){
+			if($text=="อัพเดทข่าว" || $text=="\n"){
 				$feed =callService('https://siamblockchain.com/feed/',1,'xml');
 				$text = '';
 				$i=1;
