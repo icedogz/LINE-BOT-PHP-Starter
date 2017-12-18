@@ -370,7 +370,6 @@ ETN - ฿'.number_format($etn[0]->price_thb,2).' ('.(float)fillPlus($etn[0]->per
 						'longUrl'=>$row->link
 					]);
 					$text .= $row->title.'
-'.date('d/m/y',strtotime($row->pubDate)).'
 '.$short_url->id.'
 
 ';
