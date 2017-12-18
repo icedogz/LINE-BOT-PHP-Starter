@@ -256,6 +256,18 @@ if (!is_null($events['events'])) {
 						$coin_type = 'BTC';
 						$price = $bx_price->{1}->last_price;
 					}
+					if($coin_type=='bch' || $coin_type=="BCH"){
+						$coin_type = 'BCH';
+						$price = $bx_price->{27}->last_price;
+					}
+					if($coin_type=='das' || $coin_type=="DAS"){
+						$coin_type = 'DAS';
+						$price = $bx_price->{22}->last_price;
+					}
+					if($coin_type=='ltc' || $coin_type=="LTC"){
+						$coin_type = 'LTC';
+						$price = $bx_price->{30}->last_price;
+					}
 					if($coin_type=='etc' || $coin_type=="ETC"){
 						$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
 						$coin_type = 'ETC';
@@ -273,11 +285,6 @@ if (!is_null($events['events'])) {
 					if($coin_type=='omg' || $coin_type=="OMG"){
 						$coin_type = 'OMG';
 						$price = $bx_price->{26}->last_price;
-					}
-					if($coin_type=='sigt' || $coin_type=="SIGT"){
-						$sigt =callService('https://www.cryptopia.co.nz/api/GetMarket/SIGT_BTC',1);
-						$coin_type = 'SIGT';
-						$price = $sigt->Data->LastPrice*$bx_price->{1}->last_price;
 					}
 					if($coin_type=='xmr' || $coin_type=="XMR"){
 						$xmr =callService('https://api.coinmarketcap.com/v1/ticker/monero/?convert=THB',1);
