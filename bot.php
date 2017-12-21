@@ -328,6 +328,7 @@ if (!is_null($events['events'])) {
 				$etn =callService('https://api.coinmarketcap.com/v1/ticker/electroneum/?convert=THB',1);
 				$neo =callService('https://api.coinmarketcap.com/v1/ticker/neo/?convert=THB',1);
 				$qtum =callService('https://api.coinmarketcap.com/v1/ticker/qtum/?convert=THB',1);
+				$icon =callService('https://api.coinmarketcap.com/v1/ticker/icon/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
 			'text' => 'BTC - ฿'.number_format($bx_price->{1}->last_price,0).' ('.fillPlus($bx_price->{1}->change).'%)
@@ -346,6 +347,7 @@ BTG - ฿'.number_format($btg[0]->price_thb,0).' ('.(float)fillPlus($btg[0]->per
 ETN - ฿'.number_format($etn[0]->price_thb,2).' ('.(float)fillPlus($etn[0]->percent_change_24h).'%)
 NEO - ฿'.number_format($neo[0]->price_thb,2).' ('.(float)fillPlus($neo[0]->percent_change_24h).'%)
 QTUM - ฿'.number_format($qtum[0]->price_thb,2).' ('.(float)fillPlus($qtum[0]->percent_change_24h).'%)
+ICX - ฿'.number_format($icon[0]->price_thb,2).' ('.(float)fillPlus($icon[0]->percent_change_24h).'%)
 '
 		];
 				$match_count = $match_count+1;
