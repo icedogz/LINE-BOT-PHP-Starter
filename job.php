@@ -8,7 +8,7 @@ $zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1
 
 $messages = [
 			'type' => 'text',
-			'text' => 'โย่ๆๆ โย่ๆๆ'
+			'text' => $_GET['message'] 
 		];	
 
 pushMessage($messages);		
