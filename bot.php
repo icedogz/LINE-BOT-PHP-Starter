@@ -85,9 +85,7 @@ if (!is_null($events['events'])) {
 
 					$coin = callService('https://minethecoin.com/api/coins/symbol/'.$symbol);
 					if(isset($coin->id) && $symbol!=""){
-						
-						$coin_price = $coin->price_usd;
-						$thb_price = $coin_price*$thb_rate;
+						$thb_price = $coin->price_usd*$thb_rate;
 
 						if($symbol=="btc"){ $thb_price = $bx_price->{1}->last_price; }
 						if($symbol=="eth"){ $thb_price = $bx_price->{21}->last_price; }
@@ -106,11 +104,7 @@ if (!is_null($events['events'])) {
 						$match_count = $match_count+1;	
 					}
 
-					$messages = [
-						'type' => 'text',
-						'text' => $amount.' '.$coin_type.' =  '.number_format($amount * $price,2).' บาท '
-					];	
-					$match_count = $match_count+1;
+					
 				}
 			}
 
