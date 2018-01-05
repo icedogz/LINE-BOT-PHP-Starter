@@ -32,6 +32,19 @@ if (!is_null($events['events'])) {
 				];	
 				$match_count = $match_count+1;
 			}
+
+			if($text=="/h"){
+				$messages = [
+					'type' => 'text',
+					'text' => '
+/p ดูราคาเหรียญภาพรวม
+
+/c {symbol} ดูเหรียญรายตัว ตัวอย่าง /c eth
+
+/cal {amount} {symbol} คำนวนราคาเหรียญ ตัวอย่าง /cal 1 eth'
+				];	
+				$match_count = $match_count+1;
+			}
 			
 			if(substr($text, 0, 2) == "/c"){
 				$text_index = explode(' ', $text);
@@ -270,6 +283,8 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 
+
+
 			if(substr($text, 0, 4)=="/cal"){
 				$text_index = explode(' ', $text);
 				if(isset($text_index[1]) && isset($text_index[2])){
@@ -322,7 +337,7 @@ if (!is_null($events['events'])) {
 
 					$messages = [
 						'type' => 'text',
-						'text' => $amount.' '.$coin_type.' =  '.number_format($amount * $price,2).' บาท เด้อลูกพี่'
+						'text' => $amount.' '.$coin_type.' =  '.number_format($amount * $price,2).' บาท '
 					];	
 					$match_count = $match_count+1;
 				}
