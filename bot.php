@@ -42,6 +42,8 @@ if (!is_null($events['events'])) {
 
 /p ดูราคาเหรียญภาพรวม
 
+/n ดูข่าว
+
 /c {symbol} ดูเหรียญรายตัว ตัวอย่าง /c eth
 
 /cal {amount} {symbol} คำนวนราคาเหรียญ ตัวอย่าง /cal 1 eth'
