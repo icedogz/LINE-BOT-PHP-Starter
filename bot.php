@@ -41,9 +41,13 @@ if (!is_null($events['events'])) {
 				$bx_price_res = "N/A";
 				if($symbol=="btc"){ $bx_price_res = '฿'.number_format($bx_price->{1}->last_price,2).' ('.fillPlus($bx_price->{1}->change).'%)'; }
 				if($symbol=="eth"){ $bx_price_res = '฿'.number_format($bx_price->{21}->last_price,2).' ('.fillPlus($bx_price->{21}->change).'%)'; }
-				if($symbol=="xrp"){ $bx_price_res = '฿'.number_format($bx_price->{25}->last_price,2).' ('.fillPlus($bx_price->{25}->change).'%)'; }
 				if($symbol=="das"){ $bx_price_res = '฿'.number_format($bx_price->{22}->last_price,2).' ('.fillPlus($bx_price->{22}->change).'%)'; }
+				if($symbol=="xrp"){ $bx_price_res = '฿'.number_format($bx_price->{25}->last_price,2).' ('.fillPlus($bx_price->{25}->change).'%)'; }
+				if($symbol=="omg"){ $bx_price_res = '฿'.number_format($bx_price->{26}->last_price,2).' ('.fillPlus($bx_price->{26}->change).'%)'; }
 				if($symbol=="bch"){ $bx_price_res = '฿'.number_format($bx_price->{27}->last_price,2).' ('.fillPlus($bx_price->{27}->change).'%)'; }
+				if($symbol=="evx"){ $bx_price_res = '฿'.number_format($bx_price->{28}->last_price,2).' ('.fillPlus($bx_price->{28}->change).'%)'; }
+				if($symbol=="xzc"){ $bx_price_res = '฿'.number_format($bx_price->{29}->last_price,2).' ('.fillPlus($bx_price->{29}->change).'%)'; }
+				if($symbol=="ltc"){ $bx_price_res = '฿'.number_format($bx_price->{30}->last_price,2).' ('.fillPlus($bx_price->{30}->change).'%)'; }
 
 				$coin = callService('https://minethecoin.com/api/coins/symbol/'.$symbol);
 				if(isset($coin->id) && $symbol!=""){
