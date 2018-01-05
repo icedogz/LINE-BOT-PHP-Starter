@@ -37,6 +37,8 @@ if (!is_null($events['events'])) {
 				$messages = [
 					'type' => 'text',
 					'text' => '
+/h ดูคำสั่ง command
+
 /p ดูราคาเหรียญภาพรวม
 
 /c {symbol} ดูเหรียญรายตัว ตัวอย่าง /c eth
