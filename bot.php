@@ -40,10 +40,13 @@ if (!is_null($events['events'])) {
 				$thb_rate = 33;
 
 				$coin = callService('https://minethecoin.com/api/coins/symbol/'.$symbol);
-				if(isset($coin->id)){
+				if(isset($coin->id) && $symbol!=""){
 
-					$coin_price = $coin->usd_price;
-					$messages = ['type' => 'text','text' => strtoupper($coin->symbol).' ราคา ฿'.number_format($thb_rate*$coin_price,2).' ('.fillPlus($coin->percent_change_24h).'%)'];
+					$coin_price = $coin->price_usd;
+					$messages = ['type' => 'text','text' => strtoupper($coin->symbol).' - '.$coin->name.'
+ราคา ฿'.number_format($thb_rate*$coin_price,2).' ('.fillPlus($coin->percent_change_24h).'%)
+Rank : '.$coin->rank.'
+'];
 					$match_count = $match_count+1;	
 				}
 			}
