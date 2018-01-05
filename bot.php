@@ -33,7 +33,7 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 			
-			if(preg_match('/c/',$text)){
+			if(substr($text, 0, 2) == "/c"){
 				$text_index = explode(' ', $text);
 				$symbol = trim($text_index[1]);
 				$symbol = strtolower($symbol);
@@ -345,7 +345,7 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 
-			if($text=="จาวิส อัพเดทราคา" || preg_match('/อัพเดทราคา/',$text) || $text=="/p"  || $text=="p"){
+			if($text=="จาวิส อัพเดทราคา" || preg_match('/อัพเดทราคา/',$text) || $text=="/p"){
 				$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
 				$zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1);
 				$ltc =callService('https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=THB',1);
