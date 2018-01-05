@@ -270,7 +270,65 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 
-			if(preg_match('/จาวิส คำนวนราคา/',$text) || preg_match('/จาวิส คำนวน/',$text) || substr($text, 0, 4)=="/cal"){
+			if(substr($text, 0, 4)=="/cal"){
+				$text_index = explode(' ', $text);
+				if(isset($text_index[1]) && isset($text_index[2])){
+					$amount = (float)trim($text_index[1]);
+					$coin_type = trim($text_index[2]);
+
+					if($coin_type=='eth' || $coin_type=="ETH"){
+						$coin_type = 'ETH';
+						$price = $bx_price->{21}->last_price;
+					}
+					if($coin_type=='btc' || $coin_type=="BTC"){
+						$coin_type = 'BTC';
+						$price = $bx_price->{1}->last_price;
+					}
+					if($coin_type=='bch' || $coin_type=="BCH"){
+						$coin_type = 'BCH';
+						$price = $bx_price->{27}->last_price;
+					}
+					if($coin_type=='das' || $coin_type=="DAS"){
+						$coin_type = 'DAS';
+						$price = $bx_price->{22}->last_price;
+					}
+					if($coin_type=='ltc' || $coin_type=="LTC"){
+						$coin_type = 'LTC';
+						$price = $bx_price->{30}->last_price;
+					}
+					if($coin_type=='etc' || $coin_type=="ETC"){
+						$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
+						$coin_type = 'ETC';
+						$price = $etc[0]->price_thb;
+					}
+					if($coin_type=='zec' || $coin_type=="ZEC"){
+						$zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1);
+						$coin_type = 'ZEC';
+						$price = $zec[0]->price_thb;
+					}
+					if($coin_type=='xrp' || $coin_type=="XRP"){
+						$coin_type = 'XRP';
+						$price = $bx_price->{25}->last_price;
+					}
+					if($coin_type=='omg' || $coin_type=="OMG"){
+						$coin_type = 'OMG';
+						$price = $bx_price->{26}->last_price;
+					}
+					if($coin_type=='xmr' || $coin_type=="XMR"){
+						$xmr =callService('https://api.coinmarketcap.com/v1/ticker/monero/?convert=THB',1);
+						$coin_type = 'XMR';
+						$price = $xmr[0]->price_thb;
+					}
+
+					$messages = [
+						'type' => 'text',
+						'text' => $amount.' '.$coin_type.' =  '.number_format($amount * $price,2).' บาท เด้อลูกพี่'
+					];	
+					$match_count = $match_count+1;
+				}
+			}
+
+			if(preg_match('/จาวิส คำนวนราคา/',$text) || preg_match('/จาวิส คำนวน/',$text)){
 				$text_index = explode(' ', $text);
 				if(isset($text_index[2]) && isset($text_index[3])){
 					$amount = (float)trim($text_index[2]);
