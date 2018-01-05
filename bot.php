@@ -13,6 +13,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$bx_price_url = "https://bx.in.th/api/";
 			$bx_price = callService($bx_price_url,1);
+			$thb_rate = 33;
 			// Get text sent
 			$text = $event['message']['text'];
 			// Get replyToken
@@ -52,7 +53,7 @@ if (!is_null($events['events'])) {
 				$text_index = explode(' ', $text);
 				$symbol = trim($text_index[1]);
 				$symbol = strtolower($symbol);
-				$thb_rate = 33;
+				
 				$bx_price_res = "N/A";
 				if($symbol=="btc"){ $bx_price_res = '฿'.number_format($bx_price->{1}->last_price,2).' ('.fillPlus($bx_price->{1}->change).'%)'; }
 				if($symbol=="eth"){ $bx_price_res = '฿'.number_format($bx_price->{21}->last_price,2).' ('.fillPlus($bx_price->{21}->change).'%)'; }
@@ -73,6 +74,43 @@ if (!is_null($events['events'])) {
 ราคา BX : '.$bx_price_res.' 
 '];
 					$match_count = $match_count+1;	
+				}
+			}
+
+			if(substr($text, 0, 4)=="/cal"){
+				$text_index = explode(' ', $text);
+				if(isset($text_index[1]) && isset($text_index[2])){
+					$amount = (float)trim($text_index[1]);
+					$symbol = strtolower(trim($text_index[2]));
+
+					$coin = callService('https://minethecoin.com/api/coins/symbol/'.$symbol);
+					if(isset($coin->id) && $symbol!=""){
+						
+						$coin_price = $coin->price_usd;
+						$thb_price = $coin_price*$thb_rate;
+
+						if($symbol=="btc"){ $thb_price = $bx_price->{1}->last_price; }
+						if($symbol=="eth"){ $thb_price = $bx_price->{21}->last_price; }
+						if($symbol=="das"){ $thb_price = $bx_price->{22}->last_price; }
+						if($symbol=="xrp"){ $thb_price = $bx_price->{25}->last_price; }
+						if($symbol=="omg"){ $thb_price = $bx_price->{26}->last_price; }
+						if($symbol=="bch"){ $thb_price = $bx_price->{27}->last_price; }
+						if($symbol=="evx"){ $thb_price = $bx_price->{28}->last_price; }
+						if($symbol=="xzc"){ $thb_price = $bx_price->{29}->last_price; }
+						if($symbol=="ltc"){ $thb_price = $bx_price->{30}->last_price; }
+
+						$messages = [
+							'type' => 'text',
+							'text' => $amount.' '.strtoupper($symbol).' =  '.number_format($amount * $thb_price,2).' บาท '
+						];	
+						$match_count = $match_count+1;	
+					}
+
+					$messages = [
+						'type' => 'text',
+						'text' => $amount.' '.$coin_type.' =  '.number_format($amount * $price,2).' บาท '
+					];	
+					$match_count = $match_count+1;
 				}
 			}
 
@@ -287,63 +325,7 @@ if (!is_null($events['events'])) {
 
 
 
-			if(substr($text, 0, 4)=="/cal"){
-				$text_index = explode(' ', $text);
-				if(isset($text_index[1]) && isset($text_index[2])){
-					$amount = (float)trim($text_index[1]);
-					$coin_type = trim($text_index[2]);
-
-					if($coin_type=='eth' || $coin_type=="ETH"){
-						$coin_type = 'ETH';
-						$price = $bx_price->{21}->last_price;
-					}
-					if($coin_type=='btc' || $coin_type=="BTC"){
-						$coin_type = 'BTC';
-						$price = $bx_price->{1}->last_price;
-					}
-					if($coin_type=='bch' || $coin_type=="BCH"){
-						$coin_type = 'BCH';
-						$price = $bx_price->{27}->last_price;
-					}
-					if($coin_type=='das' || $coin_type=="DAS"){
-						$coin_type = 'DAS';
-						$price = $bx_price->{22}->last_price;
-					}
-					if($coin_type=='ltc' || $coin_type=="LTC"){
-						$coin_type = 'LTC';
-						$price = $bx_price->{30}->last_price;
-					}
-					if($coin_type=='etc' || $coin_type=="ETC"){
-						$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
-						$coin_type = 'ETC';
-						$price = $etc[0]->price_thb;
-					}
-					if($coin_type=='zec' || $coin_type=="ZEC"){
-						$zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1);
-						$coin_type = 'ZEC';
-						$price = $zec[0]->price_thb;
-					}
-					if($coin_type=='xrp' || $coin_type=="XRP"){
-						$coin_type = 'XRP';
-						$price = $bx_price->{25}->last_price;
-					}
-					if($coin_type=='omg' || $coin_type=="OMG"){
-						$coin_type = 'OMG';
-						$price = $bx_price->{26}->last_price;
-					}
-					if($coin_type=='xmr' || $coin_type=="XMR"){
-						$xmr =callService('https://api.coinmarketcap.com/v1/ticker/monero/?convert=THB',1);
-						$coin_type = 'XMR';
-						$price = $xmr[0]->price_thb;
-					}
-
-					$messages = [
-						'type' => 'text',
-						'text' => $amount.' '.$coin_type.' =  '.number_format($amount * $price,2).' บาท '
-					];	
-					$match_count = $match_count+1;
-				}
-			}
+			
 
 			if(preg_match('/จาวิส คำนวนราคา/',$text) || preg_match('/จาวิส คำนวน/',$text)){
 				$text_index = explode(' ', $text);
