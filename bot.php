@@ -33,7 +33,7 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 			
-			if(preg_match('//c/',$text)){
+			if(preg_match('/c/',$text)){
 				$text_index = explode(' ', $text);
 				$symbol = trim($text_index[1]);
 				$symbol = strtolower($symbol);
