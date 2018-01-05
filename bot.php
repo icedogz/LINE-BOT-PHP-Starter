@@ -33,8 +33,22 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 			
+			if(preg_match('//c/',$text)){
+				$text_index = explode(' ', $text);
+				$symbol = trim($text_index[1]);
+				$symbol = strtolower($symbol);
+				$thb_rate = 33;
 
-			if($text=="จาวิส ขอราคา ETH" || $text=="จาวิส ขอราคา eth" || $text=="จาวิส ราคา ETH" || $text=="จาวิส ราคา eth"){
+				$coin = callService('https://minethecoin.com/api/coins/symbol/'.$symbol);
+				if(isset($coin->id)){
+
+					$coin_price = $coin->usd_price;
+					$messages = ['type' => 'text','text' => strtoupper($coin->symbol).' ราคา ฿'.number_format($thb_rate*$coin_price,2).' ('.fillPlus($coin->percent_change_24h).'%)'];
+					$match_count = $match_count+1;	
+				}
+			}
+
+			/*if($text=="จาวิส ขอราคา ETH" || $text=="จาวิส ขอราคา eth" || $text=="จาวิส ราคา ETH" || $text=="จาวิส ราคา eth"){
 				$messages = [
 					'type' => 'text',
 					'text' => 'ETH ราคา '.number_format($bx_price->{21}->last_price,2).' บาท เด้อลูกพี่'
@@ -147,6 +161,7 @@ if (!is_null($events['events'])) {
 				];	
 				$match_count = $match_count+1;
 			}
+			*/
 
 			if(preg_match('/จาวิส แรงขุด/',$text)){
 				$text_index = explode(' ', $text);
