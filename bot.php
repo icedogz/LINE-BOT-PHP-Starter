@@ -270,11 +270,11 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 
-			if(preg_match('/จาวิส คำนวนราคา/',$text) || preg_match('/จาวิส คำนวน/',$text)){
+			if(preg_match('/จาวิส คำนวนราคา/',$text) || preg_match('/จาวิส คำนวน/',$text) || preg_match('/cal/',$text)){
 				$text_index = explode(' ', $text);
 				if(isset($text_index[2]) && isset($text_index[3])){
-					$amount = (float)$text_index[2];
-					$coin_type = $text_index[3];
+					$amount = (float)trim($text_index[2]);
+					$coin_type = trim($text_index[3]);
 
 					if($coin_type=='eth' || $coin_type=="ETH"){
 						$coin_type = 'ETH';
