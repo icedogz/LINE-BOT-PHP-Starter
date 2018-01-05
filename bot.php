@@ -38,14 +38,20 @@ if (!is_null($events['events'])) {
 				$symbol = trim($text_index[1]);
 				$symbol = strtolower($symbol);
 				$thb_rate = 33;
+				$bx_price = "N/A";
+				if($symbol=="btc"){ $bx_price = '฿'.number_format($bx_price->{1}->last_price,2).' ('.fillPlus($bx_price->{1}->change).'%)'; }
+				if($symbol=="eth"){ $bx_price = '฿'.number_format($bx_price->{21}->last_price,2).' ('.fillPlus($bx_price->{21}->change).'%)'; }
+				if($symbol=="xrp"){ $bx_price = '฿'.number_format($bx_price->{25}->last_price,2).' ('.fillPlus($bx_price->{25}->change).'%)'; }
+				if($symbol=="das"){ $bx_price = '฿'.number_format($bx_price->{22}->last_price,2).' ('.fillPlus($bx_price->{22}->change).'%)'; }
+				if($symbol=="bch"){ $bx_price = '฿'.number_format($bx_price->{27}->last_price,2).' ('.fillPlus($bx_price->{27}->change).'%)'; }
 
 				$coin = callService('https://minethecoin.com/api/coins/symbol/'.$symbol);
 				if(isset($coin->id) && $symbol!=""){
 
 					$coin_price = $coin->price_usd;
 					$messages = ['type' => 'text','text' => strtoupper($coin->symbol).' - '.$coin->name.'
-ราคา ฿'.number_format($thb_rate*$coin_price,2).' ('.fillPlus($coin->percent_change_24h).'%)
-Rank : '.$coin->rank.'
+ราคานอก : ฿'.number_format($thb_rate*$coin_price,2).' ('.fillPlus($coin->percent_change_24h).'%)
+ราคา BX : '.$bx_price.' 
 '];
 					$match_count = $match_count+1;	
 				}
