@@ -72,8 +72,11 @@ if (!is_null($events['events'])) {
 
 					$coin_price = $coin->price_usd;
 					$messages = ['type' => 'text','text' => strtoupper($coin->symbol).' - '.$coin->name.'
+ราคา BX : '.$bx_price_res.' 					
 ราคานอก : ฿'.number_format($thb_rate*$coin_price,2).' ('.fillPlus($coin->percent_change_24h).'%)
-ราคา BX : '.$bx_price_res.' 
+ราคานอก : $'.number_format($coin_price,2).' ('.fillPlus($coin->percent_change_24h).'%)
+Rank : '.$coin->rank.'
+
 '];
 					$match_count = $match_count+1;	
 				}
