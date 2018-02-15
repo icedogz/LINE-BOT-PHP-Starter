@@ -13,7 +13,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$bx_price_url = "https://bx.in.th/api/";
 			$bx_price = callService($bx_price_url,1);
-			$thb_rate = 33;
+			$thb_rate = 32;
 			// Get text sent
 			$text = $event['message']['text'];
 			// Get replyToken
