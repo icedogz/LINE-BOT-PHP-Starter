@@ -319,37 +319,36 @@ if (!is_null($events['events'])) {
 
 			if($text=="จาวิส อัพเดทราคา" || preg_match('/อัพเดทราคา/',$text) || $text=="/p"){
 				$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
+				$eos =callService('https://api.coinmarketcap.com/v1/ticker/eos/?convert=THB',1);
+				$ada =callService('https://api.coinmarketcap.com/v1/ticker/cardano/?convert=THB',1);
 				$zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1);
 				$ltc =callService('https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=THB',1);
-				//$sigt =callService('https://www.cryptopia.co.nz/api/GetMarket/SIGT_BTC',1);
 				$xmr =callService('https://api.coinmarketcap.com/v1/ticker/monero/?convert=THB',1);
 				$knc =callService('https://api.coinmarketcap.com/v1/ticker/kyber-network/?convert=THB',1);
-				$btg =callService('https://api.coinmarketcap.com/v1/ticker/bitcoin-gold/?convert=THB',1);
-				$etn =callService('https://api.coinmarketcap.com/v1/ticker/electroneum/?convert=THB',1);
 				$neo =callService('https://api.coinmarketcap.com/v1/ticker/neo/?convert=THB',1);
 				$iota =callService('https://api.coinmarketcap.com/v1/ticker/iota/?convert=THB',1);
 				$tierion =callService('https://api.coinmarketcap.com/v1/ticker/tierion/?convert=THB',1);
 				$icon =callService('https://api.coinmarketcap.com/v1/ticker/icon/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
-			'text' => 'BTC - ฿'.number_format($bx_price->{1}->last_price,0).' ('.fillPlus($bx_price->{1}->change).'%)
-BCH - ฿'.number_format($bx_price->{27}->last_price,0).' ('.fillPlus($bx_price->{27}->change).'%)
-ETH - ฿'.number_format($bx_price->{21}->last_price,0).' ('.fillPlus($bx_price->{21}->change).'%)
-ETC - ฿'.number_format($etc[0]->price_thb,0).' ('.fillPlus($etc[0]->percent_change_24h).'%)
-ZEC - ฿'.number_format($zec[0]->price_thb,0).' ('.fillPlus($zec[0]->percent_change_24h).'%)
-XRP - ฿'.number_format($bx_price->{25}->last_price,2).' ('.fillPlus($bx_price->{25}->change).'%)
-DAS - ฿'.number_format($bx_price->{22}->last_price,0).' ('.fillPlus($bx_price->{22}->change).'%)
-LTC - ฿'.number_format($bx_price->{30}->last_price,0).' ('.fillPlus($bx_price->{30}->change).'%)
-XMR - ฿'.number_format($xmr[0]->price_thb,0).' ('.fillPlus($xmr[0]->percent_change_24h).'%)
-OMG - ฿'.number_format($bx_price->{26}->last_price,0).' ('.fillPlus($bx_price->{26}->change).'%)
-XZC - ฿'.number_format($bx_price->{29}->last_price,0).' ('.fillPlus($bx_price->{29}->change).'%)
-KNC - ฿'.number_format($knc[0]->price_thb,2).' ('.(float)fillPlus($knc[0]->percent_change_24h).'%)
-BTG - ฿'.number_format($btg[0]->price_thb,0).' ('.(float)fillPlus($btg[0]->percent_change_24h).'%)
-ETN - ฿'.number_format($etn[0]->price_thb,2).' ('.(float)fillPlus($etn[0]->percent_change_24h).'%)
-NEO - ฿'.number_format($neo[0]->price_thb,2).' ('.(float)fillPlus($neo[0]->percent_change_24h).'%)
-IOTA - ฿'.number_format($iota[0]->price_thb,2).' ('.(float)fillPlus($iota[0]->percent_change_24h).'%)
-TNT - ฿'.number_format($tierion[0]->price_thb,2).' ('.(float)fillPlus($tierion[0]->percent_change_24h).'%)
-ICX - ฿'.number_format($icon[0]->price_thb,2).' ('.(float)fillPlus($icon[0]->percent_change_24h).'%)
+			'text' => 'BTC - ฿'.number_format(($bx_price->{1}->last_price/1000),1).'k ('.fillPlus($bx_price->{1}->change).'%)
+ETH - '.number_format(($bx_price->{21}->last_price/1000),1).'k ('.fillPlus($bx_price->{21}->change).'%)
+BCH - '.number_format(($bx_price->{27}->last_price/1000),1).'k ('.fillPlus($bx_price->{27}->change).'%)
+ETC - '.number_format($etc[0]->price_thb,0).' ('.fillPlus($etc[0]->percent_change_24h).'%)
+EOS - '.number_format($eos[0]->price_thb,0).' ('.fillPlus($eos[0]->percent_change_24h).'%)
+ADA - '.number_format($ada[0]->price_thb,0).' ('.fillPlus($ada[0]->percent_change_24h).'%)
+ZEC - '.number_format($zec[0]->price_thb,0).' ('.fillPlus($zec[0]->percent_change_24h).'%)
+XRP - '.number_format($bx_price->{25}->last_price,2).' ('.fillPlus($bx_price->{25}->change).'%)
+DAS - '.number_format(($bx_price->{22}->last_price/1000),1).' ('.fillPlus($bx_price->{22}->change).'%)
+LTC - '.number_format($bx_price->{30}->last_price,0).' ('.fillPlus($bx_price->{30}->change).'%)
+XMR - '.number_format($xmr[0]->price_thb,0).' ('.fillPlus($xmr[0]->percent_change_24h).'%)
+OMG - '.number_format($bx_price->{26}->last_price,0).' ('.fillPlus($bx_price->{26}->change).'%)
+XZC - '.number_format($bx_price->{29}->last_price,0).' ('.fillPlus($bx_price->{29}->change).'%)
+KNC - '.number_format($knc[0]->price_thb,2).' ('.(float)fillPlus($knc[0]->percent_change_24h).'%)
+NEO - '.number_format($neo[0]->price_thb,2).' ('.(float)fillPlus($neo[0]->percent_change_24h).'%)
+IOTA - '.number_format($iota[0]->price_thb,2).' ('.(float)fillPlus($iota[0]->percent_change_24h).'%)
+TNT - '.number_format($tierion[0]->price_thb,2).' ('.(float)fillPlus($tierion[0]->percent_change_24h).'%)
+ICX - '.number_format($icon[0]->price_thb,2).' ('.(float)fillPlus($icon[0]->percent_change_24h).'%)
 '
 		];
 				$match_count = $match_count+1;
