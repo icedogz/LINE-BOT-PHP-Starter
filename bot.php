@@ -418,9 +418,9 @@ Rank : '.$coin->rank.'
 				$icon =callService('https://api.coinmarketcap.com/v1/ticker/icon/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
-			'text' => 'Name | Price | %ch 24Hr/7D
-BTC - '.number_format(($bx_price->{1}->last_price/1000),0).'k ('.fillPlus($bx_price->{1}->change).'%/'.fillPlus($btc[0]->percent_change_7d).'%)
-ETH - '.number_format(($bx_price->{21}->last_price/1000),1).'k ('.fillPlus($bx_price->{21}->change).'%/'.fillPlus($eth[0]->percent_change_7d).'%)
+			'text' => 'Name | Price | 24Hr | 7D
+BTC - '.number_format(($bx_price->{1}->last_price/1000),0).'k ('.fillPlus($bx_price->{1}->change).'% | '.fillPlus($btc[0]->percent_change_7d).'%)
+ETH - '.number_format(($bx_price->{21}->last_price/1000),1).'k ('.fillPlus($bx_price->{21}->change).'% | '.fillPlus($eth[0]->percent_change_7d).'%)
 BCH - '.number_format(($bx_price->{27}->last_price/1000),1).'k ('.fillPlus($bx_price->{27}->change).'%)
 ETC - '.number_format($etc[0]->price_thb,0).' ('.fillPlus($etc[0]->percent_change_24h).'%)
 EOS - '.number_format($eos[0]->price_thb,0).' ('.fillPlus($eos[0]->percent_change_24h).'%)
