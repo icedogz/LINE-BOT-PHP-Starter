@@ -404,6 +404,12 @@ Rank : '.$coin->rank.'
 			if($text=="จาวิส อัพเดทราคา" || preg_match('/อัพเดทราคา/',$text) || $text=="/p"){
 				$btc =callService('https://api.coinmarketcap.com/v1/ticker/bitcoin/?convert=THB',1);
 				$eth =callService('https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=THB',1);
+				$bch =callService('https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/?convert=THB',1);
+				$xrp =callService('https://api.coinmarketcap.com/v1/ticker/ripple/?convert=THB',1);
+				$dash =callService('https://api.coinmarketcap.com/v1/ticker/dash/?convert=THB',1);
+				$ltc =callService('https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=THB',1);
+				$omg =callService('https://api.coinmarketcap.com/v1/ticker/omisego/?convert=THB',1);
+				$xzc =callService('https://api.coinmarketcap.com/v1/ticker/zcoin/?convert=THB',1);
 				$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
 				$eos =callService('https://api.coinmarketcap.com/v1/ticker/eos/?convert=THB',1);
 				$ada =callService('https://api.coinmarketcap.com/v1/ticker/cardano/?convert=THB',1);
@@ -421,21 +427,21 @@ Rank : '.$coin->rank.'
 			'text' => 'Name | Price | 24Hr | 7D
 BTC - '.number_format(($bx_price->{1}->last_price/1000),0).'k ('.fillPlus($bx_price->{1}->change).'% | '.fillPlus($btc[0]->percent_change_7d).'%)
 ETH - '.number_format(($bx_price->{21}->last_price/1000),1).'k ('.fillPlus($bx_price->{21}->change).'% | '.fillPlus($eth[0]->percent_change_7d).'%)
-BCH - '.number_format(($bx_price->{27}->last_price/1000),1).'k ('.fillPlus($bx_price->{27}->change).'%)
-ETC - '.number_format($etc[0]->price_thb,0).' ('.fillPlus($etc[0]->percent_change_24h).'%)
-EOS - '.number_format($eos[0]->price_thb,0).' ('.fillPlus($eos[0]->percent_change_24h).'%)
-ADA - '.number_format($ada[0]->price_thb,2).' ('.fillPlus($ada[0]->percent_change_24h).'%)
-IOTA - '.number_format($iota[0]->price_thb,2).' ('.(float)fillPlus($iota[0]->percent_change_24h).'%)
-ZEC - '.number_format(($zec[0]->price_thb/1000),1).'k ('.fillPlus($zec[0]->percent_change_24h).'%)
-XRP - '.number_format($bx_price->{25}->last_price,2).' ('.fillPlus($bx_price->{25}->change).'%)
-XLM - '.number_format($xlm[0]->price_thb,2).' ('.fillPlus($xlm[0]->percent_change_24h).'%)
-DAS - '.number_format(($bx_price->{22}->last_price/1000),1).'k ('.fillPlus($bx_price->{22}->change).'%)
-LTC - '.number_format(($bx_price->{30}->last_price/1000),1).'k ('.fillPlus($bx_price->{30}->change).'%)
-XMR - '.number_format(($xmr[0]->price_thb/1000),1).'k ('.fillPlus($xmr[0]->percent_change_24h).'%)
-OMG - '.number_format($bx_price->{26}->last_price,0).' ('.fillPlus($bx_price->{26}->change).'%)
-XZC - '.number_format($bx_price->{29}->last_price,0).' ('.fillPlus($bx_price->{29}->change).'%)
-NEO - '.number_format($neo[0]->price_thb,0).' ('.(float)fillPlus($neo[0]->percent_change_24h).'%)
-ICX - '.number_format($icon[0]->price_thb,2).' ('.(float)fillPlus($icon[0]->percent_change_24h).'%)
+BCH - '.number_format(($bx_price->{27}->last_price/1000),1).'k ('.fillPlus($bx_price->{27}->change).'% | '.fillPlus($bch[0]->percent_change_7d).'%)
+ETC - '.number_format($etc[0]->price_thb,0).' ('.fillPlus($etc[0]->percent_change_24h).'% | '.fillPlus($etc[0]->percent_change_7d).'%)
+EOS - '.number_format($eos[0]->price_thb,0).' ('.fillPlus($eos[0]->percent_change_24h).'% | '.fillPlus($eos[0]->percent_change_7d).'%)
+ADA - '.number_format($ada[0]->price_thb,2).' ('.fillPlus($ada[0]->percent_change_24h).'% | '.fillPlus($ada[0]->percent_change_7d).'%)
+IOTA - '.number_format($iota[0]->price_thb,2).' ('.(float)fillPlus($iota[0]->percent_change_24h).'% | '.fillPlus($iota[0]->percent_change_7d).'%)
+ZEC - '.number_format(($zec[0]->price_thb/1000),1).'k ('.fillPlus($zec[0]->percent_change_24h).'% | '.fillPlus($zec[0]->percent_change_7d).'%)
+XRP - '.number_format($bx_price->{25}->last_price,2).' ('.fillPlus($bx_price->{25}->change).'% | '.fillPlus($xrp[0]->percent_change_7d).'%)
+XLM - '.number_format($xlm[0]->price_thb,2).' ('.fillPlus($xlm[0]->percent_change_24h).'% | '.fillPlus($xlm[0]->percent_change_7d).'%)
+DASH - '.number_format(($bx_price->{22}->last_price/1000),1).'k ('.fillPlus($bx_price->{22}->change).'% | '.fillPlus($dash[0]->percent_change_7d).'%)
+LTC - '.number_format(($bx_price->{30}->last_price/1000),1).'k ('.fillPlus($bx_price->{30}->change).'% | '.fillPlus($ltc[0]->percent_change_7d).'%)
+XMR - '.number_format(($xmr[0]->price_thb/1000),1).'k ('.fillPlus($xmr[0]->percent_change_24h).'% | '.fillPlus($xmr[0]->percent_change_7d).'%)
+OMG - '.number_format($bx_price->{26}->last_price,0).' ('.fillPlus($bx_price->{26}->change).'% | '.fillPlus($omg[0]->percent_change_7d).'%)
+XZC - '.number_format($bx_price->{29}->last_price,0).' ('.fillPlus($bx_price->{29}->change).'% | '.fillPlus($xzc[0]->percent_change_7d).'%)
+NEO - '.number_format($neo[0]->price_thb,0).' ('.(float)fillPlus($neo[0]->percent_change_24h).'% | '.fillPlus($neo[0]->percent_change_7d).'%)
+ICX - '.number_format($icon[0]->price_thb,2).' ('.(float)fillPlus($icon[0]->percent_change_24h).'% | '.fillPlus($icon[0]->percent_change_7d).'%)
 '
 		];
 				$match_count = $match_count+1;
