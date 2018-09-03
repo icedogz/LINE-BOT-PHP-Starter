@@ -432,7 +432,7 @@ XMR - '.number_format(($xmr[0]->price_thb/1000),1).'k ('.fillPlus($xmr[0]->perce
 OMG - '.number_format($bx_price->{26}->last_price,0).' ('.fillPlus($bx_price->{26}->change).'%)
 XZC - '.number_format($bx_price->{29}->last_price,0).' ('.fillPlus($bx_price->{29}->change).'%)
 KNC - '.number_format($knc[0]->price_thb,2).' ('.(float)fillPlus($knc[0]->percent_change_24h).'%)
-NEO - '.number_format($neo[0]->price_thb,2).' ('.(float)fillPlus($neo[0]->percent_change_24h).'%)
+NEO - '.number_format($neo[0]->price_thb,0).' ('.(float)fillPlus($neo[0]->percent_change_24h).'%)
 ICX - '.number_format($icon[0]->price_thb,2).' ('.(float)fillPlus($icon[0]->percent_change_24h).'%)
 '
 		];
