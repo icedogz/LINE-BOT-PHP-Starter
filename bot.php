@@ -416,7 +416,7 @@ Rank : '.$coin->rank.'
 				$icon =callService('https://api.coinmarketcap.com/v1/ticker/icon/?convert=THB',1);
 				$messages = [
 			'type' => 'text',
-			'text' => 'BTC - ฿'.number_format(($bx_price->{1}->last_price/1000),1).'k ('.fillPlus($bx_price->{1}->change).'%)
+			'text' => 'BTC - ฿'.number_format(($bx_price->{1}->last_price/1000),0).'k ('.fillPlus($bx_price->{1}->change).'%)
 ETH - '.number_format(($bx_price->{21}->last_price/1000),1).'k ('.fillPlus($bx_price->{21}->change).'%)
 BCH - '.number_format(($bx_price->{27}->last_price/1000),1).'k ('.fillPlus($bx_price->{27}->change).'%)
 ETC - '.number_format($etc[0]->price_thb,0).' ('.fillPlus($etc[0]->percent_change_24h).'%)
