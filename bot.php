@@ -13,6 +13,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$bx_price_url = "https://bx.in.th/api/";
 			$bx_price = callService($bx_price_url,1);
+			$thb_rate = 32;
 			// Get text sent
 			$text = $event['message']['text'];
 			// Get replyToken
@@ -32,9 +33,87 @@ if (!is_null($events['events'])) {
 				];	
 				$match_count = $match_count+1;
 			}
-			
 
-			if($text=="จาวิส ขอราคา ETH" || $text=="จาวิส ขอราคา eth" || $text=="จาวิส ราคา ETH" || $text=="จาวิส ราคา eth"){
+			if($text=="/h"){
+				$messages = [
+					'type' => 'text',
+					'text' => '
+/h ดูคำสั่ง command
+
+/p ดูราคาเหรียญภาพรวม
+
+/n ดูข่าว
+
+/c {symbol} ดูเหรียญรายตัว ตัวอย่าง /c eth
+
+/cal {amount} {symbol} คำนวนราคาเหรียญ ตัวอย่าง /cal 1 eth'
+				];	
+				$match_count = $match_count+1;
+			}
+			
+			if(substr($text, 0, 2) == "/c"){
+				$text_index = explode(' ', $text);
+				$symbol = trim($text_index[1]);
+				$symbol = strtolower($symbol);
+				
+				$bx_price_res = "N/A";
+				if($symbol=="btc"){ $bx_price_res = '฿'.number_format($bx_price->{1}->last_price,2).' ('.fillPlus($bx_price->{1}->change).'%)'; }
+				if($symbol=="eth"){ $bx_price_res = '฿'.number_format($bx_price->{21}->last_price,2).' ('.fillPlus($bx_price->{21}->change).'%)'; }
+				if($symbol=="das"){ $bx_price_res = '฿'.number_format($bx_price->{22}->last_price,2).' ('.fillPlus($bx_price->{22}->change).'%)'; }
+				if($symbol=="xrp"){ $bx_price_res = '฿'.number_format($bx_price->{25}->last_price,2).' ('.fillPlus($bx_price->{25}->change).'%)'; }
+				if($symbol=="omg"){ $bx_price_res = '฿'.number_format($bx_price->{26}->last_price,2).' ('.fillPlus($bx_price->{26}->change).'%)'; }
+				if($symbol=="bch"){ $bx_price_res = '฿'.number_format($bx_price->{27}->last_price,2).' ('.fillPlus($bx_price->{27}->change).'%)'; }
+				if($symbol=="evx"){ $bx_price_res = '฿'.number_format($bx_price->{28}->last_price,2).' ('.fillPlus($bx_price->{28}->change).'%)'; }
+				if($symbol=="xzc"){ $bx_price_res = '฿'.number_format($bx_price->{29}->last_price,2).' ('.fillPlus($bx_price->{29}->change).'%)'; }
+				if($symbol=="ltc"){ $bx_price_res = '฿'.number_format($bx_price->{30}->last_price,2).' ('.fillPlus($bx_price->{30}->change).'%)'; }
+
+				$coin = callService('https://minethecoin.com/api/coins/symbol/'.$symbol);
+				if(isset($coin->id) && $symbol!=""){
+
+					$coin_price = $coin->price_usd;
+					$messages = ['type' => 'text','text' => strtoupper($coin->symbol).' - '.$coin->name.'
+ราคา BX : '.$bx_price_res.' 					
+ราคานอก : ฿'.number_format($thb_rate*$coin_price,2).' ('.fillPlus($coin->percent_change_24h).'%)
+ราคานอก : $'.number_format($coin_price,2).' ('.fillPlus($coin->percent_change_24h).'%)
+Rank : '.$coin->rank.'
+
+'];
+					$match_count = $match_count+1;	
+				}
+			}
+
+			if(substr($text, 0, 4)=="/cal"){
+				$text_index = explode(' ', $text);
+				if(isset($text_index[1]) && isset($text_index[2])){
+					$amount = (float)trim($text_index[1]);
+					$symbol = strtolower(trim($text_index[2]));
+
+					$coin = callService('https://minethecoin.com/api/coins/symbol/'.$symbol);
+					if(isset($coin->id) && $symbol!=""){
+						$thb_price = $coin->price_usd*$thb_rate;
+
+						if($symbol=="btc"){ $thb_price = $bx_price->{1}->last_price; }
+						if($symbol=="eth"){ $thb_price = $bx_price->{21}->last_price; }
+						if($symbol=="das"){ $thb_price = $bx_price->{22}->last_price; }
+						if($symbol=="xrp"){ $thb_price = $bx_price->{25}->last_price; }
+						if($symbol=="omg"){ $thb_price = $bx_price->{26}->last_price; }
+						if($symbol=="bch"){ $thb_price = $bx_price->{27}->last_price; }
+						if($symbol=="evx"){ $thb_price = $bx_price->{28}->last_price; }
+						if($symbol=="xzc"){ $thb_price = $bx_price->{29}->last_price; }
+						if($symbol=="ltc"){ $thb_price = $bx_price->{30}->last_price; }
+
+						$messages = [
+							'type' => 'text',
+							'text' => $amount.' '.strtoupper($symbol).' =  '.number_format($amount * $thb_price,2).' บาท '
+						];	
+						$match_count = $match_count+1;	
+					}
+
+					
+				}
+			}
+
+			/*if($text=="จาวิส ขอราคา ETH" || $text=="จาวิส ขอราคา eth" || $text=="จาวิส ราคา ETH" || $text=="จาวิส ราคา eth"){
 				$messages = [
 					'type' => 'text',
 					'text' => 'ETH ราคา '.number_format($bx_price->{21}->last_price,2).' บาท เด้อลูกพี่'
@@ -147,6 +226,7 @@ if (!is_null($events['events'])) {
 				];	
 				$match_count = $match_count+1;
 			}
+			*/
 
 			if(preg_match('/จาวิส แรงขุด/',$text)){
 				$text_index = explode(' ', $text);
@@ -242,11 +322,15 @@ if (!is_null($events['events'])) {
 				$match_count = $match_count+1;
 			}
 
+
+
+			
+
 			if(preg_match('/จาวิส คำนวนราคา/',$text) || preg_match('/จาวิส คำนวน/',$text)){
 				$text_index = explode(' ', $text);
 				if(isset($text_index[2]) && isset($text_index[3])){
-					$amount = (float)$text_index[2];
-					$coin_type = $text_index[3];
+					$amount = (float)trim($text_index[2]);
+					$coin_type = trim($text_index[3]);
 
 					if($coin_type=='eth' || $coin_type=="ETH"){
 						$coin_type = 'ETH';
