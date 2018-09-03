@@ -405,6 +405,7 @@ Rank : '.$coin->rank.'
 				$etc =callService('https://api.coinmarketcap.com/v1/ticker/ethereum-classic/?convert=THB',1);
 				$eos =callService('https://api.coinmarketcap.com/v1/ticker/eos/?convert=THB',1);
 				$ada =callService('https://api.coinmarketcap.com/v1/ticker/cardano/?convert=THB',1);
+				$xlm =callService('https://api.coinmarketcap.com/v1/ticker/stellar/?convert=THB',1);
 				$zec =callService('https://api.coinmarketcap.com/v1/ticker/zcash/?convert=THB',1);
 				$ltc =callService('https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=THB',1);
 				$xmr =callService('https://api.coinmarketcap.com/v1/ticker/monero/?convert=THB',1);
@@ -420,7 +421,9 @@ ETH - '.number_format(($bx_price->{21}->last_price/1000),1).'k ('.fillPlus($bx_p
 BCH - '.number_format(($bx_price->{27}->last_price/1000),1).'k ('.fillPlus($bx_price->{27}->change).'%)
 ETC - '.number_format($etc[0]->price_thb,0).' ('.fillPlus($etc[0]->percent_change_24h).'%)
 EOS - '.number_format($eos[0]->price_thb,0).' ('.fillPlus($eos[0]->percent_change_24h).'%)
+XLM - '.number_format($xlm[0]->price_thb,2).' ('.fillPlus($xlm[0]->percent_change_24h).'%)
 ADA - '.number_format($ada[0]->price_thb,2).' ('.fillPlus($ada[0]->percent_change_24h).'%)
+IOTA - '.number_format($iota[0]->price_thb,2).' ('.(float)fillPlus($iota[0]->percent_change_24h).'%)
 ZEC - '.number_format(($zec[0]->price_thb/1000),1).'k ('.fillPlus($zec[0]->percent_change_24h).'%)
 XRP - '.number_format($bx_price->{25}->last_price,2).' ('.fillPlus($bx_price->{25}->change).'%)
 DAS - '.number_format(($bx_price->{22}->last_price/1000),1).'k ('.fillPlus($bx_price->{22}->change).'%)
@@ -430,7 +433,6 @@ OMG - '.number_format($bx_price->{26}->last_price,0).' ('.fillPlus($bx_price->{2
 XZC - '.number_format($bx_price->{29}->last_price,0).' ('.fillPlus($bx_price->{29}->change).'%)
 KNC - '.number_format($knc[0]->price_thb,2).' ('.(float)fillPlus($knc[0]->percent_change_24h).'%)
 NEO - '.number_format($neo[0]->price_thb,2).' ('.(float)fillPlus($neo[0]->percent_change_24h).'%)
-IOTA - '.number_format($iota[0]->price_thb,2).' ('.(float)fillPlus($iota[0]->percent_change_24h).'%)
 ICX - '.number_format($icon[0]->price_thb,2).' ('.(float)fillPlus($icon[0]->percent_change_24h).'%)
 '
 		];
