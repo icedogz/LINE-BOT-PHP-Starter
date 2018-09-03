@@ -431,7 +431,6 @@ XZC - '.number_format($bx_price->{29}->last_price,0).' ('.fillPlus($bx_price->{2
 KNC - '.number_format($knc[0]->price_thb,2).' ('.(float)fillPlus($knc[0]->percent_change_24h).'%)
 NEO - '.number_format($neo[0]->price_thb,2).' ('.(float)fillPlus($neo[0]->percent_change_24h).'%)
 IOTA - '.number_format($iota[0]->price_thb,2).' ('.(float)fillPlus($iota[0]->percent_change_24h).'%)
-TNT - '.number_format($tierion[0]->price_thb,2).' ('.(float)fillPlus($tierion[0]->percent_change_24h).'%)
 ICX - '.number_format($icon[0]->price_thb,2).' ('.(float)fillPlus($icon[0]->percent_change_24h).'%)
 '
 		];
